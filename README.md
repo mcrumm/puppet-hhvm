@@ -11,4 +11,4 @@ class { "hhvm": }
 
 To make use of hhvm as fastcgi interface make sure that:
 
-"unix:/var/run/hhvm.sock" is your fastcgi interface in your nginx module
+"unix:/var/run/hhvm/hhvm.sock" is your fastcgi interface in your nginx module
