@@ -1,0 +1,6 @@
+MODE=daemon
+USER=<%= scope.lookupvar('hhvm::params::hhvm_user') %>
+SOCK=/var/run/hhvm/hhvm.sock
+PORT=<%= scope.lookupvar('hhvm::port') %>
+PIDFILE=/var/run/hhvm/hhvm.pid
+ARGS="-v PidFile=${PIDFILE} -v Server.Type=fastcgi -v Server.Port=${PORT} -v Server.FileSocket=${SOCK} -u ${USER}"
