@@ -1,7 +1,7 @@
 puppet-hhvm
 ===========
 
-Build HHVM from source for Ubuntu
+Build HHVM from source for Ubuntu. This process can take over an hour..
 
 Designed to work in conjuction with a nginx module.
 
