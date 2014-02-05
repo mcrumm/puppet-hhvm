@@ -11,7 +11,7 @@ Server {
 AdminServer {
 	Port = 9088
 	ThreadCount = 1
-	Password =  <%= scope.lookupvar('hhvm::adminpassword') %>
+	Password = <%= scope.lookupvar('hhvm::adminpassword') %>
 }
 Eval {
 	Jit = true
