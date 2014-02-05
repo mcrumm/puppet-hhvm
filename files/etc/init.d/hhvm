@@ -36,25 +36,34 @@ test_hhvm_config() {
 	return 0
 }
 
+start() {
+				echo -n "Starting $DESC: "
+                start-stop-daemon --start --background --quiet \
+				    --pidfile $PIDFILE \
+				    --exec $DAEMON \
+				    -- -m server -c "$CONFIG" $ARGS $DAEMON_OPTS || true
+				echo "$NAME."
+}
+
+stop() {
+				echo -n "Stopping $DESC: "
+                start-stop-daemon --stop --pidfile $PIDFILE \
+		    		--exec $DAEMON || true
+		    	echo "$NAME."
+}
+
 case "$1" in
 	start)
-		echo -n "Starting $DESC: "
 		test_hhvm_config
-		start-stop-daemon --start --background --quiet \
-		    --pidfile $PIDFILE \
-		    --exec $DAEMON \
-		    -- -m server -c "$CONFIG" $ARGS $DAEMON_OPTS || true
-		echo "$NAME."
+		start
 		;;
 
 	stop)
-		echo -n "Stopping $DESC: "
-		start-stop-daemon --stop --pidfile $PIDFILE \
-		    --exec $DAEMON || true
-		echo "$NAME."
+		stop
 		;;
 
 	restart)
+		test_hhvm_config
         stop
         start
         ;;
