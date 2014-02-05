@@ -33,6 +33,13 @@ class hhvm::config inherits hhvm::params {
         source => 'puppet:///modules/hhvm/etc/init.d/hhvm',
     }
           
+    file { '/etc/init/hhvm.conf':
+        ensure  => 'file',
+        owner   => 'root',
+        group   => 'root',
+        source => 'puppet:///modules/hhvm/etc/init/hhvm.conf',
+    }
+    
     file { '/etc/hhvm/config.hdf':
         ensure  => 'file',
         owner   => 'root',
