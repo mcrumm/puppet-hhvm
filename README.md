@@ -22,3 +22,5 @@ Facebook - https://github.com/facebook/hhvm/wiki/Building-and-installing-HHVM-on
 Cyrill Schumacher - https://gist.github.com/SchumacherFM/6204170
 
 Vadim Borodavko - https://github.com/javer/hhvm-vagrant-vm/blob/master/etc/init.d/hhvm
+
+Yermo Lamers - http://stackoverflow.com/questions/19013516/upstart-script-for-hhvm-hiphop
