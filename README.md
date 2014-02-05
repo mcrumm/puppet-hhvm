@@ -12,3 +12,10 @@ class { "hhvm": }
 To make use of hhvm as fastcgi interface make sure that:
 
 "unix:/var/run/hhvm/hhvm.sock" is your fastcgi interface in your nginx module
+
+Credits:
+
+Me for building it into a puppet module!
+Facebook - https://github.com/facebook/hhvm/wiki/Building-and-installing-HHVM-on-Ubuntu-13.10
+Cyrill Schumacher - https://gist.github.com/SchumacherFM/6204170
+Vadim Borodavko - https://github.com/javer/hhvm-vagrant-vm/blob/master/etc/init.d/hhvm
