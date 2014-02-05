@@ -1,7 +1,7 @@
 puppet-hhvm
 ===========
 
-Build HHVM from source for Ubuntu. This process can take over an hour..
+Build HHVM from source for Ubuntu. This process can take over an hour.. Only tested on Ubuntu 13.10
 
 Designed to work in conjuction with a nginx module.
 
@@ -16,6 +16,9 @@ To make use of hhvm as fastcgi interface make sure that:
 Credits:
 
 Me for building it into a puppet module!
+
 Facebook - https://github.com/facebook/hhvm/wiki/Building-and-installing-HHVM-on-Ubuntu-13.10
+
 Cyrill Schumacher - https://gist.github.com/SchumacherFM/6204170
+
 Vadim Borodavko - https://github.com/javer/hhvm-vagrant-vm/blob/master/etc/init.d/hhvm
