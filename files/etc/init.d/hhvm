@@ -16,6 +16,7 @@ DAEMON=$HPHP_HOME/hphp/hhvm/hhvm
 NAME=hhvm
 DESC="HipHop VM"
 CONFIG=/etc/hhvm/config.hdf
+JITREPO=/tmp/.hhbc.hhvm
 
 # Include hhvm defaults if available
 if [ -f /etc/default/hhvm ]; then
@@ -65,6 +66,7 @@ case "$1" in
 	restart)
 		test_hhvm_config
         stop
+        rm $JITREPO
         start
         ;;
         
