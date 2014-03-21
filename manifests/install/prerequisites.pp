@@ -4,7 +4,7 @@
 class hhvm::install::prerequisites(
 ) {
   # build-essential already defined in gcc
-  require gcc
+  #require gcc
   
   $ubuntu_packages = [
     
