@@ -18,13 +18,14 @@ class hhvm::install::package {
 					    require  => File["/usr/local/src/hiphop-php"]
 					}      
       
-          vcsrepo { "/usr/local/src/hiphop-php/libevent":
+          /* This doesn't appear to be required anymore? */
+          /*vcsrepo { "/usr/local/src/hiphop-php/libevent":
               ensure => present,
               provider => git,
               source => "git://github.com/libevent/libevent.git",
               revision => 'release-1.4.14b-stable',
               require  => File["/usr/local/src/hiphop-php"]
-          } 
+          }*/
         }
         centos,fedora,rhel: {
             fail("Module ${module_name} has no config for ${::operatingsystem}")
