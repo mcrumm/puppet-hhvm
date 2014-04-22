@@ -3,6 +3,8 @@
 # This module manages HHVM prerequisites installation
 class hhvm::install::prerequisites(
 ) {
+  require gcc
+  
   # build-essential already defined in gcc
   if !defined(Package['build-essential']) {
 	 package { 'build-essential':
