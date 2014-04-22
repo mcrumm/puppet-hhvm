@@ -3,7 +3,9 @@
 # This module manages HHVM prerequisites installation
 class hhvm::install::prerequisites(
 ) {
+  # argh parse order dependencies suck
   require gcc
+  require git
   
   # build-essential already defined in gcc
   if !defined(Package['build-essential']) {
