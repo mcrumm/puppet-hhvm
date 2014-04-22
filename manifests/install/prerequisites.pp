@@ -27,7 +27,7 @@ class hhvm::install::prerequisites(
 		  'libexpat-dev', 'libgd2-xpm-dev', 'libgoogle-glog-dev', 'libgoogle-perftools-dev', 'libicu-dev',
 		  'libjemalloc-dev', 'libmcrypt-dev', 'libmemcached-dev', 'libmysqlclient-dev', 'libncurses-dev',
 		  'libonig-dev', 'libpcre3-dev', 'libreadline-dev', 'libtbb-dev', 'libtool', 'libxml2-dev', 'zlib1g-dev', 'libevent-dev',
-		  'libmagickwand-dev', 'libinotifytools0-dev', 'libiconv-hook-dev', 'libedit-dev', 'libiberty-dev', 'libxslt1-dev', 'ocaml-native-compilers', 'libiberty-dev'
+		  'libmagickwand-dev', 'libinotifytools0-dev', 'libiconv-hook-dev', 'libedit-dev', 'libiberty-dev', 'libxslt1-dev', 'ocaml-native-compilers'
 
   ]
   
