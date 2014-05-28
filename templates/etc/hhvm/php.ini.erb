@@ -1,7 +1,8 @@
-; HHVM Settings
-hhvm.server.port = <%= scope.lookupvar('hhvm::port') %>
-hhvm.server.file_socket=/var/run/hhvm/hhvm.sock
-hhvm.server.allow_duplicate_cookies = 0
+; php options
+date.timezone = <%= scope.lookupvar('hhvm::params::timezone') %>
 
-; PHP Settings
-date.timezone = Europe/London
+; hhvm specific
+hhvm.log.level = Warning
+hhvm.log.always_log_unhandled_exceptions = true
+hhvm.log.runtime_error_reporting_level = 8191
+hhvm.mysql.typed_results = false

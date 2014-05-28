@@ -1,7 +1,7 @@
 MODE=daemon
 USER=<%= scope.lookupvar('hhvm::params::hhvm_user') %>
-SOCK=/var/run/hhvm/hhvm.sock
-PORT=<%= scope.lookupvar('hhvm::port') %>
-PIDFILE=/var/run/hhvm/hhvm.pid
-JITREPO=/tmp/.hhbc.hhvm
-ARGS="-c /etc/hhvm/php.ini -v PidFile=${PIDFILE} -v Server.Type=fastcgi -v Server.Port=${PORT} -v Server.FileSocket=${SOCK} -v Repo.Central.Path=${JITREPO} -u ${USER}"
+SOCK=<%= scope.lookupvar('hhvm::params::socket') %>
+PORT=<%= scope.lookupvar('hhvm::params::port') %>
+PIDFILE=<%= scope.lookupvar('hhvm::params::pid') %>
+JITREPO=PIDFILE=<%= scope.lookupvar('hhvm::params::jit_repo') %>
+ARGS="-c /etc/hhvm/php.ini -c /etc/hhvm/server.ini -u ${USER}"

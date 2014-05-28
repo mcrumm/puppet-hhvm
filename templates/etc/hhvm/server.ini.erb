@@ -1,0 +1,12 @@
+; php options
+pid = <%= scope.lookupvar('hhvm::params::pid') %>
+
+; hhvm specific
+hhvm.server.port = <%= scope.lookupvar('hhvm::params::port') %>
+hhvm.server.file_socket=<%= scope.lookupvar('hhvm::params::sock') %>
+hhvm.server.type = fastcgi
+hhvm.server.default_document = index.php
+hhvm.log.use_log_file = true
+hhvm.log.file = <%= scope.lookupvar('hhvm::params::error_log') %>
+hhvm.repo.central.path = <%= scope.lookupvar('hhvm::params::jit_repo') %>
+hhvm.server.allow_duplicate_cookies = 0

@@ -15,8 +15,9 @@ HPHP_HOME=/usr/local/src/hiphop-php/hhvm
 DAEMON=$HPHP_HOME/hphp/hhvm/hhvm
 NAME=hhvm
 DESC="HipHop VM"
-CONFIG=/etc/hhvm/config.hdf
-JITREPO=/tmp/.hhbc.hhvm
+CONFIG_FILE="/etc/hhvm/server.ini"
+SYSTEM_CONFIG_FILE="/etc/hhvm/php.ini"
+JITREPO=<%= scope.lookupvar('hhvm::params::jit_repo') %>
 
 # Include hhvm defaults if available
 if [ -f /etc/default/hhvm ]; then
@@ -29,20 +30,12 @@ set -e
 
 . /lib/lsb/init-functions
 
-test_hhvm_config() {
-	if [ ! -f "${CONFIG}" ] ; then
-		echo "Please create ${CONFIG}"
-		return 1
-	fi
-	return 0
-}
-
 start() {
 				echo -n "Starting $DESC: "
                 start-stop-daemon --start --background --quiet \
 				    --pidfile $PIDFILE \
 				    --exec $DAEMON \
-				    -- -m server -c "$CONFIG" $ARGS $DAEMON_OPTS || true
+				    -- -m server -c "$CONFIG_FILE" -c "$SYSTEM_CONFIG_FILE" $ARGS $DAEMON_OPTS || true
 				echo "$NAME."
 }
 
