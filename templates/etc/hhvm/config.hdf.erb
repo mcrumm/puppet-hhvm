@@ -1,6 +1,6 @@
 PidFile = /var/run/hhvm/hhvm.pid
 Server {
-	Port = <%= scope.lookupvar('hhvm::port') %>
+	Port = <%= scope.lookupvar('hhvm::params::port') %>
 	SourceRoot = <%= scope.lookupvar('hhvm::sourceroot') %>
 	DefaultDocument = index.php
 	#ThreadCount = 50
