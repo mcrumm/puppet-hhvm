@@ -10,3 +10,26 @@ hhvm.log.use_log_file = true
 hhvm.log.file = <%= scope.lookupvar('hhvm::params::error_log') %>
 hhvm.repo.central.path = <%= scope.lookupvar('hhvm::params::jit_repo') %>
 hhvm.server.allow_duplicate_cookies = 0
+hhvm.server.source_root = <%= scope.lookupvar('hhvm::sourceroot') %>
+
+; logging
+hhvm.log.always_log_unhandled_exceptions = true
+hhvm.log.admin_log.file = /var/log/hhvm/access.log
+
+; admin server
+hhvm.admin_server.password = <%= scope.lookupvar('hhvm::adminpassword') %>
+hhvm.admin_server.port = 9088
+hhvm.admin_server.thread_count = 1
+
+; apc
+hhvm.server.apc.enable_apc = true
+
+; jit
+hhvm.jit = true
+hhvm.jit_warmup_requests = 5
+
+; debugger
+hhvm.debugger.enable_debugger = false
+hhvm.debugger.enable_debugger_server = false
+hhvm.debugger.port = 9089
+hhvm.debugger.default_sandbox_path = <%= scope.lookupvar('hhvm::sourceroot') %>

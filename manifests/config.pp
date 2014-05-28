@@ -39,12 +39,19 @@ class hhvm::config inherits hhvm::params {
         group   => 'root',
         source => 'puppet:///modules/hhvm/etc/init/hhvm.conf',
     }
-    
-    file { '/etc/hhvm/config.hdf':
+
+    file { '/etc/hhvm/server.ini':
         ensure  => 'file',
         owner   => 'root',
         group   => 'root',
-        content => template("${module_name}/etc/hhvm/config.hdf.erb"),
+        content => template("${module_name}/etc/hhvm/server.ini.erb"),
+    }
+    
+    file { '/etc/hhvm/php.ini':
+        ensure  => 'file',
+        owner   => 'root',
+        group   => 'root',
+        content => template("${module_name}/etc/hhvm/php.ini.erb"),
     }
     
     /* this is only needed for www-data */
