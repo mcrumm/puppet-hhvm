@@ -67,7 +67,7 @@ case "$1" in
 		test_hhvm_config
         stop
         echo "Sleeping for 3 seconds..."
-    	sleep 3
+		sleep 3
         rm $JITREPO
         start
         ;;

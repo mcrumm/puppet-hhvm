@@ -4,4 +4,4 @@ SOCK=/var/run/hhvm/hhvm.sock
 PORT=<%= scope.lookupvar('hhvm::port') %>
 PIDFILE=/var/run/hhvm/hhvm.pid
 JITREPO=/tmp/.hhbc.hhvm
-ARGS="-v PidFile=${PIDFILE} -v Server.Type=fastcgi -v Server.Port=${PORT} -v Server.FileSocket=${SOCK} -v Repo.Central.Path=${JITREPO} -u ${USER}"
+ARGS="-c /etc/hhvm/php.ini -v PidFile=${PIDFILE} -v Server.Type=fastcgi -v Server.Port=${PORT} -v Server.FileSocket=${SOCK} -v Repo.Central.Path=${JITREPO} -u ${USER}"

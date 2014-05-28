@@ -1,0 +1,7 @@
+; HHVM Settings
+hhvm.server.port = <%= scope.lookupvar('hhvm::port') %>
+hhvm.server.file_socket=/var/run/hhvm/hhvm.sock
+hhvm.server.allow_duplicate_cookies = 0
+
+; PHP Settings
+date.timezone = Europe/London
