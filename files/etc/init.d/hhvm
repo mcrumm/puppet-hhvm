@@ -27,6 +27,14 @@ set -e
 
 . /lib/lsb/init-functions
 
+test_hhvm_config() {
+	if [ ! -f "${SYSTEM_CONFIG_FILE}" ] ; then
+		echo "Please create ${SYSTEM_CONFIG_FILE}"
+		return 1
+	fi
+	return 0
+}
+
 start() {
 				echo -n "Starting $DESC: "
                 start-stop-daemon --start --background --quiet \
