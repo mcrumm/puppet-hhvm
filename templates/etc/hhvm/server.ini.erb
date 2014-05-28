@@ -3,7 +3,7 @@ pid = <%= scope.lookupvar('hhvm::params::pid') %>
 
 ; hhvm specific
 hhvm.server.port = <%= scope.lookupvar('hhvm::params::port') %>
-hhvm.server.file_socket=<%= scope.lookupvar('hhvm::params::sock') %>
+hhvm.server.file_socket=<%= scope.lookupvar('hhvm::params::socket') %>
 hhvm.server.type = fastcgi
 hhvm.server.default_document = index.php
 hhvm.log.use_log_file = true

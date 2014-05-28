@@ -40,7 +40,7 @@ start() {
                 start-stop-daemon --start --background --quiet \
 				    --pidfile $PIDFILE \
 				    --exec $DAEMON \
-				    -- -m server -c "$CONFIG_FILE" -c "$SYSTEM_CONFIG_FILE" $ARGS $DAEMON_OPTS || true
+				    -- -m server $ARGS $DAEMON_OPTS || true
 				echo "$NAME."
 }
 
