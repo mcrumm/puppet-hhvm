@@ -3,5 +3,7 @@ USER=<%= scope.lookupvar('hhvm::params::hhvm_user') %>
 SOCK=<%= scope.lookupvar('hhvm::params::socket') %>
 PORT=<%= scope.lookupvar('hhvm::params::port') %>
 PIDFILE=<%= scope.lookupvar('hhvm::params::pid') %>
-JITREPO=PIDFILE=<%= scope.lookupvar('hhvm::params::jit_repo') %>
+JITREPO=<%= scope.lookupvar('hhvm::params::jit_repo') %>
+CONFIG_FILE="/etc/hhvm/server.ini"
+SYSTEM_CONFIG_FILE="/etc/hhvm/php.ini"
 ARGS="-c /etc/hhvm/php.ini -c /etc/hhvm/server.ini -u ${USER}"

@@ -15,9 +15,6 @@ HPHP_HOME=/usr/local/src/hiphop-php/hhvm
 DAEMON=$HPHP_HOME/hphp/hhvm/hhvm
 NAME=hhvm
 DESC="HipHop VM"
-CONFIG_FILE="/etc/hhvm/server.ini"
-SYSTEM_CONFIG_FILE="/etc/hhvm/php.ini"
-JITREPO=<%= scope.lookupvar('hhvm::params::jit_repo') %>
 
 # Include hhvm defaults if available
 if [ -f /etc/default/hhvm ]; then
