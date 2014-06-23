@@ -21,6 +21,13 @@ class hhvm::install::prerequisites(
    }
   }
   
+  # included with openssl
+  if !defined(Package['libpcre3-dev']) {
+   package { 'libpcre3-dev':
+     ensure => installed,
+   }
+  }
+  
   # We are only targeting 14.04 from now on
   $ubuntu_packages = [
   
@@ -30,7 +37,7 @@ class hhvm::install::prerequisites(
 		  'libc-client2007e-dev', 'libcap-dev', 'libcurl4-openssl-dev', 'libdwarf-dev', 'libelf-dev',
 		  'libexpat-dev', 'libgd2-xpm-dev', 'libgoogle-glog-dev', 'libgoogle-perftools-dev', 'libicu-dev',
 		  'libjemalloc-dev', 'libmcrypt-dev', 'libmemcached-dev', 'libmysqlclient-dev', 'libncurses-dev',
-		  'libonig-dev', 'libpcre3-dev', 'libreadline-dev', 'libtbb-dev', 'libtool', 'libxml2-dev', 'zlib1g-dev', 'libevent-dev',
+		  'libonig-dev', 'libreadline-dev', 'libtbb-dev', 'libtool', 'libxml2-dev', 'zlib1g-dev', 'libevent-dev',
 		  'libmagickwand-dev', 'libinotifytools0-dev', 'libiconv-hook-dev', 'libedit-dev', 'libiberty-dev', 'libxslt1-dev', 'ocaml-native-compilers'
 
   ]
