@@ -8,6 +8,7 @@
 # }
 #
 class hhvm(
+  $number_of_processor_cores = $hhvm::params::number_of_processor_cores,
   $sourceroot = "/var/www/vhosts/magento-capistrano/current",
   $adminpassword = 'UyPutcu9',
 ) {

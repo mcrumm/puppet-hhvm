@@ -9,7 +9,7 @@ class hhvm::install::build {
         owner  => 'root',
         group  => 'root',
         mode   => '755',
-        source => 'puppet:///modules/hhvm/build-hhvm.sh',
+        content => template("${module_name}/build-hhvm.sh.erb")
     }
           
     exec {"Use build-hhvm.sh":
