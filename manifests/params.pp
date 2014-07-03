@@ -1,6 +1,6 @@
 class hhvm::params {
 
-  $number_of_processor_cores = 2
+  $number_of_processor_cores = $::physicalprocessorcount
   $hhvm_user  = $operatingsystem ? { centos => 'nginx', ubuntu => 'www-data', default => 'nginx' }
   $jit_repo = "/tmp/.hhbc.hhvm"
   $port = 9000
