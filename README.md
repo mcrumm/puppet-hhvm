@@ -1,7 +1,7 @@
 puppet-hhvm
 ===========
 
-Build HHVM from source for Ubuntu. This process can take over an hour.. Only tested on Ubuntu 13.10
+Build HHVM from source for Ubuntu 14.04. This process can take over an hour..
 
 Designed to work in conjuction with a nginx module.
 
@@ -12,6 +12,12 @@ class { "hhvm": }
 To make use of hhvm as fastcgi interface make sure that:
 
 "unix:/var/run/hhvm/hhvm.sock" is your fastcgi interface in your nginx module
+
+Requirements:
+
+Ubuntu 14.04
+Additional puppet modules - vcsrepo if building from source
+https://github.com/puppetlabs/puppetlabs-vcsrepo
 
 Credits:
 

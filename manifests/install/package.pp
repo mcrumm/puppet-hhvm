@@ -3,32 +3,31 @@
 class hhvm::install::package {
 
   case $operatingsystem {
-        debian,ubuntu: {
-          include hhvm::install::prerequisites
-            
-          file { "/usr/local/src/hiphop-php":
-              ensure => "directory",
-          }
+    debian,ubuntu: {
+      include hhvm::install::prerequisites
           
-          vcsrepo { "/usr/local/src/hiphop-php/hhvm":
-					    ensure   => present,
-					    provider => git,
-					    source   => "git://github.com/facebook/hhvm.git",
-					    revision => "master",
-					    require  => File["/usr/local/src/hiphop-php"]
-					}      
-      
-          /* This doesn't appear to be required anymore? */
-          /*vcsrepo { "/usr/local/src/hiphop-php/libevent":
-              ensure => present,
-              provider => git,
-              source => "git://github.com/libevent/libevent.git",
-              revision => 'release-1.4.14b-stable',
-              require  => File["/usr/local/src/hiphop-php"]
-          }*/
+      if($hhvm::compile_from_source) {
+        file { "/usr/local/src/hiphop-php":
+	       ensure => "directory",
         }
-        centos,fedora,rhel: {
-            fail("Module ${module_name} has no config for ${::operatingsystem}")
+	          
+        vcsrepo { "/usr/local/src/hiphop-php/hhvm":
+          ensure   => present,
+          provider => git,
+				  source   => "git://github.com/facebook/hhvm.git",
+				  revision => "master",
+				  require  => File["/usr/local/src/hiphop-php"]
         }
+			} else {
+			  # TODO support package install
+			  #wget -O - http://dl.hhvm.com/conf/hhvm.gpg.key | sudo apt-key add -
+        #echo deb http://dl.hhvm.com/ubuntu trusty main | sudo tee /etc/apt/sources.list.d/hhvm.list
+        #sudo apt-get update
+        #sudo apt-get install hhvm
+			}   
+    }
+    centos,fedora,rhel: {
+      fail("Module ${module_name} has no config for ${::operatingsystem}")
+    }
   }
 }

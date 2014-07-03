@@ -30,14 +30,14 @@ class hhvm::config inherits hhvm::params {
         mode    => '0755',
         owner   => 'root',
         group   => 'root',
-        source => 'puppet:///modules/hhvm/etc/init.d/hhvm',
+        content => template("${module_name}/etc/init.d/hhvm.erb"),
     }
           
     file { '/etc/init/hhvm.conf':
         ensure  => 'file',
         owner   => 'root',
         group   => 'root',
-        source => 'puppet:///modules/hhvm/etc/init/hhvm.conf',
+        content => template("${module_name}/etc/init/hhvm.conf.erb")
     }
 
     file { '/etc/hhvm/server.ini':
