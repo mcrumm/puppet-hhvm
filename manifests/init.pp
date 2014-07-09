@@ -16,7 +16,7 @@ class hhvm(
   $jit_enabled = $hhvm::params::jit_enabled,
   $jit_warmup_requests = $hhvm::params::jit_warmup_requests,
   
-  $timezone = $hhvm::params::timezone,
+  $date_timezone = $hhvm::params::date_timezone,
   $max_post_size = $hhvm::params::max_post_size,
   $upload_max_file_size = $hhvm::params::upload_max_file_size, 
   

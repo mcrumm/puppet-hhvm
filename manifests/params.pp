@@ -51,7 +51,7 @@ class hhvm::params {
   $typed_results = false
 
   # PHP Settings
-  $timezone = undef
+  $date_timezone = undef
   $max_post_size = undef
   $upload_max_file_size = undef
   

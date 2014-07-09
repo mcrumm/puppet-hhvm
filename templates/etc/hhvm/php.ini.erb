@@ -1,6 +1,6 @@
 ; php options
-<% if @timezone %>
-date.timezone = <%= scope.lookupvar('hhvm::timezone') %>
+<% if @date_timezone %>
+date.timezone = <%= scope.lookupvar('hhvm::date_timezone') %>
 <% end %>
 
 ; hhvm specific
