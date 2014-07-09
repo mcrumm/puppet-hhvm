@@ -19,11 +19,21 @@ class hhvm::install::package {
 				  require  => File["/usr/local/src/hiphop-php"]
         }
 			} else {
-			  # TODO support package install
-			  #wget -O - http://dl.hhvm.com/conf/hhvm.gpg.key | sudo apt-key add -
+			  
+			  # Get Package from apt - this has not been tested
+			  include apt
+			  apt::key { "2048R/1BE7A449": url => 'http://dl.hhvm.com/conf/hhvm.gpg.key' }
+        apt::source { "hhvm":
+          url => "http://dl.hhvm.com",
+          distro => "ubuntu",
+          release => "trusty",
+          repository => "main"
+        }
+
+        package { "hhvm": 
+          ensure => installed
+        }
         #echo deb http://dl.hhvm.com/ubuntu trusty main | sudo tee /etc/apt/sources.list.d/hhvm.list
-        #sudo apt-get update
-        #sudo apt-get install hhvm
 			}   
     }
     centos,fedora,rhel: {
