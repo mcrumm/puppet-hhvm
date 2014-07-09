@@ -1,5 +1,5 @@
 ; php options
-<% if scope.lookupvar("::date_timezone") %>
+<% if scope.lookupvar("hhvm::date_timezone") %>
 date.timezone = <%= scope.lookupvar('hhvm::date_timezone') %>
 <% end %>
 
