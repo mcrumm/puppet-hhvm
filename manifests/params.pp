@@ -3,23 +3,60 @@ class hhvm::params {
   # Used in compilation, not in run time
   $number_of_processor_cores = $::physicalprocessorcount
 
-  # Various settings for the server
+  # What user should hhvm run as?
   $hhvm_user  = $operatingsystem ? { centos => 'nginx', ubuntu => 'www-data', default => 'nginx' }
+  
+  # Used in upstart/restart
+  $pid = "/var/run/hhvm/hhvm.pid"
+  
+  # This needs to be read/writeable by the hhvm process
   $jit_repo = "/tmp/.hhvm.hhbc"
+  
+  # What port and socket to listen to
   $port = 9000
   $socket = "/var/run/hhvm/hhvm.sock"
-  $pid = "/var/run/hhvm/hhvm.pid"
-  $error_log = "/var/log/hhvm/error.log"
+  $server_type = "fastcgi"
   
+  # These settings might not be required anymore
+  $source_root = "/var/www/html"
+  $default_document = "index.php"
+  
+  # Debug settings
+  $enable_debugger = false
+  $enable_debugger_server = false
+  $debugger_port = 9089
+  $admin_server_password = 'UyPutcu9'
+  
+  # Admin server
+  $admin_server_port = 9088
+  $admin_server_thread_count = 1
+  
+  # Jit settings
+  $jit_enabled = true
+  $jit_warmup_requests = 5
+  
+  # Compatability settings - for Magento
+  $allow_duplicate_cookies = 0
+  
+  # APC
+  $enable_apc = true
+  
+  # Logging
+  $use_log_file = true
+  $error_log = "/var/log/hhvm/error.log"
+  $access_log = "/var/log/hhvm/access.log"
+  $log_level = 'Warning'
+  $always_log_unhandled_exceptions = true
+  $runtime_error_reporting_level = 8191
+  $typed_results = false
+
   # PHP Settings
-  $timezone = "Europe/London"
+  $timezone = undef
+  $max_post_size = undef
+  $upload_max_file_size = undef
   
   # Further settings to translate?
-  #   memory_limit        => '256M', - No such setting in hiphop?
-  #   hhvm.log.runtime_error_reporting_level # php setting - error_reporting     => 'E_ALL & ~E_NOTICE | E_DEPRECATED'
   #   display_errors      => 'On', # no such setting?
-  #   hhvm.server.max_post_size  # PHP post_max_size       => '40M', 
-  #   hhvm.server.upload.upload_max_file_size # PHP upload_max_filesize => '32M',
   #   max_execution_time  => '600', # no such setting?
-  #   max_input_vars      => '3000', # no such setting?     
+  #   max_input_vars      => '3000', # no such setting?   
 }

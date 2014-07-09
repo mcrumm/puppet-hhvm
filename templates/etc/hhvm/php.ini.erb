@@ -1,8 +1,10 @@
 ; php options
-date.timezone = <%= scope.lookupvar('hhvm::params::timezone') %>
+<% if @timezone %>
+date.timezone = <%= scope.lookupvar('hhvm::timezone') %>
+<% end %>
 
 ; hhvm specific
-hhvm.log.level = Warning
-hhvm.log.always_log_unhandled_exceptions = true
-hhvm.log.runtime_error_reporting_level = 8191
-hhvm.mysql.typed_results = false
+hhvm.log.level = <%= scope.lookupvar('hhvm::params::log_level') %>
+hhvm.log.always_log_unhandled_exceptions = <%= scope.lookupvar('hhvm::params::always_log_unhandled_exceptions') %>
+hhvm.log.runtime_error_reporting_level = <%= scope.lookupvar('hhvm::params::runtime_error_reporting_level') %>
+hhvm.mysql.typed_results = <%= scope.lookupvar('hhvm::params::typed_results') %>

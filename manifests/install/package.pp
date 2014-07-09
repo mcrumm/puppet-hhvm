@@ -30,4 +30,12 @@ class hhvm::install::package {
       fail("Module ${module_name} has no config for ${::operatingsystem}")
     }
   }
+  
+  # at the moment hiphop does not load php.ini/server.ini by default and we need these for running hhvm from bash
+  file { '/usr/local/bin/hhvm-cli':
+    ensure  => 'file',
+    owner   => 'root',
+    group   => 'root',
+    content => template("${module_name}/usr/local/bin/hhvm-cli.erb"),
+  }
 }

@@ -9,9 +9,21 @@
 #
 class hhvm(
   $number_of_processor_cores = $hhvm::params::number_of_processor_cores,
-  $sourceroot = "/var/www/vhosts/magento-capistrano/current",
-  $adminpassword = 'UyPutcu9',
-  $compile_from_source = true
+  $compile_from_source = true,
+  
+  $sourceroot = $hhvm::params::source_root,
+  
+  $jit_enabled = $hhvm::params::jit_enabled,
+  $jit_warmup_requests = $hhvm::params::jit_warmup_requests,
+  
+  $timezone = $hhvm::params::timezone,
+  $max_post_size = $hhvm::params::max_post_size,
+  $upload_max_file_size = $hhvm::params::upload_max_file_size, 
+  
+  $enable_debugger = $hhvm::params::enable_debugger,
+  $enable_debugger_server = $hhvm::params::enable_debugger_server,
+  $debugger_port = $hhvm::params::debugger_port,
+  $admin_server_password = $hhvm::params::admin_server_password,
 ) {
     class { 'hhvm::config': }
 	  class { 'hhvm::install::package': }
