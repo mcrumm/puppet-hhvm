@@ -16,8 +16,12 @@ To make use of hhvm as fastcgi interface make sure that:
 Requirements:
 
 Ubuntu 14.04
+
 Additional puppet modules - vcsrepo if building from source
 https://github.com/puppetlabs/puppetlabs-vcsrepo
+
+puppet-apt if using package
+https://github.com/example42/puppet-apt
 
 Credits:
 
