@@ -2,7 +2,7 @@
 pid = <%= scope.lookupvar('hhvm::params::pid') %>
 
 ; hhvm specific
-hhvm.server.port = <%= scope.lookupvar('hhvm::params::port') %>
+hhvm.server.port = <%= scope.lookupvar('hhvm::port') %>
 hhvm.server.file_socket= <%= scope.lookupvar('hhvm::params::socket') %>
 hhvm.server.type = <%= scope.lookupvar('hhvm::params::server_type') %>
 hhvm.server.default_document = <%= scope.lookupvar('hhvm::params::default_document') %>

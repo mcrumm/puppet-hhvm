@@ -13,6 +13,8 @@ class hhvm(
   
   $sourceroot = $hhvm::params::source_root,
   
+  $port = $hhvm::params::port,
+  
   $jit_enabled = $hhvm::params::jit_enabled,
   $jit_warmup_requests = $hhvm::params::jit_warmup_requests,
   
