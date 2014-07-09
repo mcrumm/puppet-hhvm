@@ -36,6 +36,7 @@ class hhvm::install::package {
     ensure  => 'file',
     owner   => 'root',
     group   => 'root',
+    mode    => '0755',
     content => template("${module_name}/usr/local/bin/hhvm-cli.erb"),
   }
 }
