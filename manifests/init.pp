@@ -24,7 +24,9 @@ class hhvm(
   $enable_debugger_server = $hhvm::params::enable_debugger_server,
   $debugger_port = $hhvm::params::debugger_port,
   $admin_server_password = $hhvm::params::admin_server_password,
-) {
+
+) inherits hhvm::params {
+  
     class { 'hhvm::config': }
 	  class { 'hhvm::install::package': }
 	  class { 'hhvm::install::build': }
