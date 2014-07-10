@@ -1,36 +1,60 @@
 puppet-hhvm
 ===========
 
-Build HHVM from source for Ubuntu 14.04. This process can take over an hour..
+This module installs HHVM (the Facebook HipHop Virtual Machine) on your web server.
 
-Designed to work in conjuction with a nginx module.
+The default settings are to listen on a socket at: /var/run/hhvm/hhvm.pid. You can use this via FastCGI in nginx or Apache to connect to it.
 
-To use in your .pp file:
+Usage:
+======
+
+The module by default will compile HipHop VM from source.
+
+Puppet will most likely time out but the compilation will continue in the background.
 
 class { "hhvm": }
 
-To make use of hhvm as fastcgi interface make sure that:
+To use a package instead (not tested yet):
 
-"unix:/var/run/hhvm/hhvm.sock" is your fastcgi interface in your nginx module
+class { "hhvm": 
+	compile_from_source => false,
+}
 
-Requirements:
+Additional options are supported, take a look at init.pp:
+
+class { "hhvm": 
+	number_of_processor_cores => 2, # Use how many cores for compilation, default is all
+	date_timezone => "Europe/London", # Change your timezone (see PHP setting)
+	jit_warmup_requests => 5 # Reduce the number of jit warm up requests
+}
+
+Connecting to HHVM:
+===================
+
+In your nginx configuration, set:
+
+fastcgi_pass   unix:/var/run/hhvm/hhvm.sock;
+
+Restarting HHVM
+===============
+
+sudo service hhvm restart or sudo /etc/init.d/hhvm restart
+
+Supported Operating Systems:
+============================
 
 Ubuntu 14.04
 
-Additional puppet modules - vcsrepo if building from source
+Additional puppet modules
+=========================
+
+vcsrepo if building from source
 https://github.com/puppetlabs/puppetlabs-vcsrepo
 
 puppet-apt if using package
 https://github.com/example42/puppet-apt
 
-Credits:
+Contributing
+============
 
-Me for building it into a puppet module!
-
-Facebook - https://github.com/facebook/hhvm/wiki/Building-and-installing-HHVM-on-Ubuntu-13.10
-
-Cyrill Schumacher - https://gist.github.com/SchumacherFM/6204170
-
-Vadim Borodavko - https://github.com/javer/hhvm-vagrant-vm/blob/master/etc/init.d/hhvm
-
-Yermo Lamers - http://stackoverflow.com/questions/19013516/upstart-script-for-hhvm-hiphop
+Feel free to submit a PR for further options or more operating system support!
