@@ -25,7 +25,7 @@ class hhvm::params {
   $enable_debugger = false
   $enable_debugger_server = false
   $debugger_port = 8089
-  $admin_server_password = 'UyPutcu9'
+  $admin_server_password = undef
   
   # Admin server
   $admin_server_port = 8088
