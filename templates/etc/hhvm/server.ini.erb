@@ -16,7 +16,7 @@ hhvm.server.source_root = <%= scope.lookupvar('hhvm::params::source_root') %>
 hhvm.log.admin_log.file = <%= scope.lookupvar('hhvm::params::access_log') %>
 
 ; admin server
-<% if scope.lookupvar("hhvm::admin_server_password") %>
+<% if scope.lookupvar("hhvm::admin_server_password") != '' %>
 hhvm.admin_server.password = <%= scope.lookupvar('hhvm::admin_server_password') %>
 <% end %>
 hhvm.admin_server.port = <%= scope.lookupvar('hhvm::params::admin_server_port') %>

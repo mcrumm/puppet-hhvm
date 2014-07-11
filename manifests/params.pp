@@ -25,11 +25,11 @@ class hhvm::params {
   $enable_debugger = false
   $enable_debugger_server = false
   $debugger_port = 8089
-  $admin_server_password = undef
   
   # Admin server
   $admin_server_port = 8088
   $admin_server_thread_count = 1
+  $admin_server_password = 'UyPutcu9'
   
   # Jit settings
   $jit_enabled = true
