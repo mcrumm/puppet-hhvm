@@ -9,8 +9,11 @@ hhvm.server.default_document = <%= scope.lookupvar('hhvm::params::default_docume
 hhvm.log.use_log_file = <%= scope.lookupvar('hhvm::params::use_log_file') %>
 hhvm.log.file = <%= scope.lookupvar('hhvm::params::error_log') %>
 hhvm.repo.central.path = <%= scope.lookupvar('hhvm::params::jit_repo') %>
-hhvm.server.allow_duplicate_cookies = <%= scope.lookupvar('hhvm::params::allow_duplicate_cookies') %>
 hhvm.server.source_root = <%= scope.lookupvar('hhvm::params::source_root') %>
+
+; php compatibility
+hhvm.server.allow_duplicate_cookies = <%= scope.lookupvar('hhvm::params::allow_duplicate_cookies') %>
+hhvm.enable_obj_destruct_call = 1
 
 ; logging
 hhvm.log.admin_log.file = <%= scope.lookupvar('hhvm::params::access_log') %>
