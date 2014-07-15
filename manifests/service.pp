@@ -4,10 +4,19 @@
 # directly
 class hhvm::service (
 ) {
+  if ($hhvm::compile_from_source) {
     service { 'hhvm':
         ensure    => 'running',
         hasstatus => true,
         enable    => true,
         require   => Exec['Use build-hhvm.sh']
     }
+  } else {
+    service { 'hhvm':
+        ensure    => 'running',
+        hasstatus => true,
+        enable    => true,
+        require   => Package["hhvm"]
+    }
+  }
 }
