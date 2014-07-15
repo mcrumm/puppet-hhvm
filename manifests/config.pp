@@ -40,6 +40,13 @@ class hhvm::config inherits hhvm::params {
         content => template("${module_name}/etc/init/hhvm.conf.erb")
     }
 
+    file { '/etc/hhvm/cli.ini':
+        ensure  => 'file',
+        owner   => 'root',
+        group   => 'root',
+        content => template("${module_name}/etc/hhvm/cli.ini.erb"),
+    }
+    
     file { '/etc/hhvm/server.ini':
         ensure  => 'file',
         owner   => 'root',

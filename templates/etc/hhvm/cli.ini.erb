@@ -1,0 +1,7 @@
+; hhvm specific
+hhvm.log.use_log_file = <%= scope.lookupvar('hhvm::params::use_log_file') %>
+hhvm.log.file = <%= scope.lookupvar('hhvm::params::error_log') %>
+hhvm.repo.central.path = <%= scope.lookupvar('hhvm::params::jit_repo') %>
+
+; logging
+hhvm.log.admin_log.file = <%= scope.lookupvar('hhvm::params::access_log') %>
