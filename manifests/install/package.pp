@@ -4,9 +4,9 @@ class hhvm::install::package {
 
   case $operatingsystem {
     debian,ubuntu: {
-      include hhvm::install::prerequisites
-          
       if($hhvm::compile_from_source) {
+        include hhvm::install::prerequisites
+        
         file { "/usr/local/src/hiphop-php":
 	       ensure => "directory",
         }

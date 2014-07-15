@@ -14,7 +14,7 @@ Puppet will most likely time out but the compilation will continue in the backgr
 
 class { "hhvm": }
 
-To use a package instead (not tested yet):
+To use a package instead (from dl.hhvm.com repo):
 
 class { "hhvm": 
 	compile_from_source => false,
