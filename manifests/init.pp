@@ -29,6 +29,12 @@ class hhvm(
 
 ) inherits hhvm::params {
   
+    if($compile_from_source) {
+      $path_to_hhvm = '/usr/local/bin/hhvm'
+	  } else {
+	    $path_to_hhvm = '/usr/bin/hhvm'
+	  }
+  
     class { 'hhvm::config': }
 	  class { 'hhvm::install::package': }
 	  class { 'hhvm::install::build': }

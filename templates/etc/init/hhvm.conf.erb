@@ -14,7 +14,7 @@ umask 022
 
 # Location of config and executable
 
-env SERVER=<%= scope.lookupvar('hhvm::params::path_to_hhvm') %>
+env SERVER=<%= scope.lookupvar('hhvm::path_to_hhvm') %>
 env CONFIG_FILE="/etc/hhvm/server.ini"
 env SYSTEM_CONFIG_FILE="/etc/hhvm/php.ini"
 env RUN_AS=www-data
