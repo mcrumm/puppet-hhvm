@@ -5,9 +5,10 @@
   "license": "BSD",
   "source": "https://github.com/craigcarnell/puppet-hhvm.git",
   "project_page": "https://github.com/craigcarnell/puppet-hhvm",
-  "description": "Install and configure HipHop VM (HHVM Virtual Machine) - the PHP Just in Time environment/compiler by Facebook\n\nBuilds from source or packages for Ubuntu 14.04\n\nProvides command line interface and fastcgi interface",
+  "description": "The HipHop VM (HHVM Virtual Machine) is a Just in time compiler for PHP applications (JIT)\n\nThis module is written to either install and configure HHVM in fastcgi and cli mode to run your applications.\n\nYou can use a nginx/apache module via fastcgi to run your web based application.\n\nBuilds from source or packages for Ubuntu 14.04",
   "dependencies": [
     {"name":"puppetlabs/vcsrepo","version_requirement":"0.1.2"},
     {"name":"example42/apt","version_requirement":"2.0.7"}
-  ]
+  ],
+  "summary": "Install HipHop VM (HHVM Virtual Machine) - the PHP Just in Time environment/compiler by Facebook"
 }
