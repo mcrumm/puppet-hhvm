@@ -36,7 +36,7 @@ class hhvm::install::prerequisites(
       'libonig-dev', 'libreadline-dev', 'libtbb-dev', 'libtool', 'libxml2-dev', 'zlib1g-dev',
 		  'libevent-dev', 'libmagickwand-dev', 'libinotifytools0-dev', 'libiconv-hook-dev', 'libedit-dev',
 		  'libiberty-dev', 'libxslt1-dev',  'ocaml-native-compilers',
-		  'php5-imagick'
+		  'php5-imagick', 'libyaml-dev'
   
   ]
 
