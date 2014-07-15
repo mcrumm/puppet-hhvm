@@ -6,9 +6,9 @@ class hhvm::params {
   $path_to_source_hhvm = '/usr/local/src/hiphop-php/hhvm/hphp/hhvm/hhvm'
   
   if($hhvm::compile_from_source) {
-    $path_to_installed_hhvm = '/usr/local/bin/hhvm'
+    $path_to_hhvm = '/usr/local/bin/hhvm'
   } else {
-    $path_to_installed_hhvm = '/usr/bin/hhvm'
+    $path_to_hhvm = '/usr/bin/hhvm'
   }
   
   # What user should hhvm run as?
