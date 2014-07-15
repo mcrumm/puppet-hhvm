@@ -1,0 +1,13 @@
+{
+  "name": "craigcarnell-hhvm",
+  "version": "0.0.2",
+  "author": "Craig Carnell",
+  "license": "BSD",
+  "source": "https://github.com/craigcarnell/puppet-hhvm.git",
+  "project_page": "https://github.com/craigcarnell/puppet-hhvm",
+  "description": "Install and configure HipHop VM (HHVM Virtual Machine) - the PHP Just in Time environment/compiler by Facebook\n\nBuilds from source or packages for Ubuntu 14.04\n\nProvides command line interface and fastcgi interface",
+  "dependencies": [
+    {"name":"puppetlabs/vcsrepo","version_requirement":"0.1.2"},
+    {"name":"example42/apt","version_requirement":"2.0.7"}
+  ]
+}
