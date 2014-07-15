@@ -2,7 +2,15 @@ class hhvm::params {
 
   # Used in compilation, not in run time
   $number_of_processor_cores = $::physicalprocessorcount
-
+  
+  $path_to_source_hhvm = '/usr/local/src/hiphop-php/hhvm/hphp/hhvm/hhvm'
+  
+  if($hhvm::compile_from_source) {
+    $path_to_installed_hhvm = '/usr/local/bin/hhvm'
+  } else {
+    $path_to_installed_hhvm = '/usr/bin/hhvm'
+  }
+  
   # What user should hhvm run as?
   $hhvm_user  = $operatingsystem ? { centos => 'nginx', ubuntu => 'www-data', default => 'nginx' }
   

@@ -16,7 +16,7 @@ class hhvm::install::build {
 	    exec {"Use build-hhvm.sh":
 	        require => File['build-hhvm.sh'],
 	        command => "/tmp/build-hhvm.sh",
-	        creates => "/usr/local/src/hiphop-php/hhvm/hphp/hhvm/hhvm",
+	        creates => $hhvm::params::path_to_source_hhvm,
 	        notify  => Class['hhvm::service']
 	    }
 	    
