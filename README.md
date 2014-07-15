@@ -54,6 +54,11 @@ https://github.com/puppetlabs/puppetlabs-vcsrepo
 puppet-apt if using package
 https://github.com/example42/puppet-apt
 
+Forge URL
+=========
+
+https://forge.puppetlabs.com/luckyknight/hhvm
+
 Contributing
 ============
 
