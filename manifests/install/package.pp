@@ -23,17 +23,18 @@ class hhvm::install::package {
 			  # Get Package from apt - this has not been tested
 			  include apt
 			  apt::key { "2048R/1BE7A449": url => 'http://dl.hhvm.com/conf/hhvm.gpg.key' }
-        apt::source { "hhvm":
-          url => "http://dl.hhvm.com",
-          distro => "ubuntu",
-          release => "trusty",
-          repository => "main"
+        
+        apt::repository { "hhvm":
+            url        => "http://dl.hhvm.co/ubuntu/",
+            distro     => 'trusty',
+            repository => 'main',
+            require => Apt::Key["2048R/1BE7A449"]
         }
 
         package { "hhvm": 
-          ensure => installed
+          ensure => installed,
+          require => Apt::Repository["hhvm"]
         }
-        #echo deb http://dl.hhvm.com/ubuntu trusty main | sudo tee /etc/apt/sources.list.d/hhvm.list
 			}   
     }
     centos,fedora,rhel: {
