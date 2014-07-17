@@ -14,6 +14,7 @@ hhvm.server.source_root = <%= scope.lookupvar('hhvm::params::source_root') %>
 ; php compatibility
 hhvm.server.allow_duplicate_cookies = <%= scope.lookupvar('hhvm::params::allow_duplicate_cookies') %>
 hhvm.enable_obj_destruct_call = 1
+;hhvm.enable_zend_sorting = 1
 
 ; logging
 hhvm.log.admin_log.file = <%= scope.lookupvar('hhvm::params::access_log') %>
