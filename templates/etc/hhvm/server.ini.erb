@@ -17,7 +17,7 @@ hhvm.enable_obj_destruct_call = 1
 ;hhvm.enable_zend_sorting = 1
 
 ; logging
-hhvm.log.admin_log.file = <%= scope.lookupvar('hhvm::params::access_log') %>
+hhvm.log.admin_log.file = <%= scope.lookupvar('hhvm::params::admin_log') %>
 
 ; admin server
 <% if scope.lookupvar("hhvm::admin_server_password") != '' %>
