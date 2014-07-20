@@ -8,7 +8,7 @@
   "description": "The HipHop VM (HHVM Virtual Machine) is a Just in time compiler for PHP applications (JIT)\n\nThis module is written to either install and configure HHVM in fastcgi and cli mode to run your applications.\n\nYou can use a nginx/apache module via fastcgi to run your web based application.\n\nBuilds from source or packages for Ubuntu 14.04",
   "dependencies": [
     {"name":"puppetlabs/vcsrepo","version_requirement":"0.1.2"},
-    {"name":"example42/apt","version_requirement":"2.0.7"}
+    {"name":"puppetlabs/apt","version_requirement":"1.5.1"}
   ],
   "summary": "Install HipHop VM (HHVM Virtual Machine) - the PHP Just in Time environment/compiler by Facebook"
 }
