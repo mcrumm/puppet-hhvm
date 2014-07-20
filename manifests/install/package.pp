@@ -26,13 +26,13 @@ class hhvm::install::package {
         }
       } else {
         include apt
-        apt::key { '2048R/1BE7A449': url => 'http://dl.hhvm.com/conf/hhvm.gpg.key' }
+        apt::key { '1BE7A449': url => 'http://dl.hhvm.com/conf/hhvm.gpg.key' }
         
         apt::source { "hhvm":
             url        => "http://dl.hhvm.com/ubuntu/",
             distro     => 'trusty',
             repository => 'main',
-            require    => Apt::Key['2048R/1BE7A449']
+            require    => Apt::Key["1BE7A449"]
         }
 
         package { $hhvm_package_name:
