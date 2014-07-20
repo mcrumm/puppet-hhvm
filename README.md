@@ -51,8 +51,8 @@ Additional puppet modules
 vcsrepo if building from source
 https://github.com/puppetlabs/puppetlabs-vcsrepo
 
-puppet-apt if using package
-https://github.com/example42/puppet-apt
+apt if using package
+https://github.com/puppetlabs/puppetlabs-apt
 
 Forge URL
 =========
