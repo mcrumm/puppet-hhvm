@@ -32,7 +32,7 @@ class hhvm::install::package {
 
         package { "hhvm": 
           ensure => installed,
-          require => Apt::Repository["hhvm"]
+          require => Apt::Source["hhvm"]
         }
 			}   
     }
