@@ -27,6 +27,7 @@ class hhvm::install::package {
             location	=> "http://dl.hhvm.com/ubuntu/",
             release	=> 'trusty',
             repos 	=> 'main',
+            include_src	=> false,
             require 	=> Apt::Key["1BE7A449"]
         }
 
