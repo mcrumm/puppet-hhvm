@@ -24,10 +24,10 @@ class hhvm::install::package {
 			  apt::key { "1BE7A449": key_source => 'http://dl.hhvm.com/conf/hhvm.gpg.key' }
         
         apt::source { "hhvm":
-            url        => "http://dl.hhvm.com/ubuntu/",
-            distro     => 'trusty',
-            repository => 'main',
-            require => Apt::Key["1BE7A449"]
+            location	=> "http://dl.hhvm.com/ubuntu/",
+            release	=> 'trusty',
+            repos 	=> 'main',
+            require 	=> Apt::Key["1BE7A449"]
         }
 
         package { "hhvm": 
