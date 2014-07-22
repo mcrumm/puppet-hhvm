@@ -9,18 +9,12 @@ hhvm.log.always_log_unhandled_exceptions = <%= scope.lookupvar('hhvm::params::al
 hhvm.log.runtime_error_reporting_level = <%= scope.lookupvar('hhvm::params::runtime_error_reporting_level') %>
 hhvm.mysql.typed_results = <%= scope.lookupvar('hhvm::params::typed_results') %>
 
-<% if @php_ini_cfg_append -%>
+<% if scope.lookupvar("hhvm::php_ini_cfg_append") -%>
+  <%
+  php_ini_cfg_append = scope.lookupvar('hhvm::php_ini_cfg_append')
+  -%> 
+;additional options
   <%- @php_ini_cfg_append.each do |key,value| -%>
-    <%- if value.is_a?(Hash) -%>
-      <%- value.each do |subkey,subvalue| -%>
-        <%- Array(subvalue).each do |asubvalue| -%>
-    <%= key %> <%= subkey %> <%= asubvalue %>
-        <%- end -%>
-      <%- end -%>
-    <%- else -%>
-      <%- Array(value).each do |asubvalue| -%>
-    <%= key %>=<%= asubvalue %>
-      <%- end -%>
-    <%- end -%>
+    <%= key %>=<%= value %>
   <%- end -%>
 <% end -%>
