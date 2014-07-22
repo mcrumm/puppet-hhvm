@@ -9,7 +9,7 @@
 #
 class hhvm(
   $number_of_processor_cores = $hhvm::params::number_of_processor_cores,
-  $compile_from_source = true,
+  $compile_from_source = false,
   $use_nightly = false,
   
   $sourceroot = $hhvm::params::source_root,
