@@ -1,23 +1,24 @@
-; php options
+;php options
 <% if scope.lookupvar("hhvm::date_timezone") %>
 date.timezone = <%= scope.lookupvar('hhvm::date_timezone') %>
 <% end %>
 
-; hhvm specific
+;hhvm specific
 hhvm.log.level = <%= scope.lookupvar('hhvm::params::log_level') %>
 hhvm.log.always_log_unhandled_exceptions = <%= scope.lookupvar('hhvm::params::always_log_unhandled_exceptions') %>
 hhvm.log.runtime_error_reporting_level = <%= scope.lookupvar('hhvm::params::runtime_error_reporting_level') %>
 hhvm.mysql.typed_results = <%= scope.lookupvar('hhvm::params::typed_results') %>
 
-; hhvm extensions
 <% if scope.lookupvar("hhvm::extensions") %>
+;hhvm extensions
     <%- scope.lookupvar("hhvm::extensions").each do |extension| -%>
     extension=<%= extension %>;
     <%- end -%>
 <% end %>
 
-; environment variables
+
 <% if scope.lookupvar("hhvm::environment_vars") %>
+;environment variables
     <%- scope.lookupvar("hhvm::environment_vars").each do |environment_var| -%>
     <%= environment_var %>;
     <%- end -%>
