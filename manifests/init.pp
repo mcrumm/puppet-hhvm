@@ -28,8 +28,7 @@ class hhvm(
   $debugger_port = $hhvm::params::debugger_port,
   $admin_server_password = $hhvm::params::admin_server_password,
 
-  $extensions        = [],
-  $environment_vars  = [],
+  $php_ini_cfg_append       = undef
 
 ) inherits hhvm::params {
   
@@ -39,8 +38,9 @@ class hhvm(
 	    $path_to_hhvm = '/usr/bin/hhvm'
 	  }
   
-    validate_array($extensions)
-    validate_array($environment_vars)
+    if ($php_ini_cfg_append != undef) {
+      validate_hash($php_ini_cfg_append)
+    }
     
     class { 'hhvm::config': }
 	  class { 'hhvm::install::package': }
