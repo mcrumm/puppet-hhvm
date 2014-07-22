@@ -30,9 +30,17 @@ class hhvm::install::package {
             require => Apt::Key["2048R/1BE7A449"]
         }
 
-        package { "hhvm": 
-          ensure => installed,
-          require => Apt::Repository["hhvm"]
+        if($hhvm::use_nightly) {
+	        package { "hhvm-nightly": 
+	          ensure => installed,
+	          require => Apt::Repository["hhvm"]
+	        }
+        
+        } else {
+          package { "hhvm": 
+            ensure => installed,
+            require => Apt::Repository["hhvm"]
+          }
         }
 			}   
     }
