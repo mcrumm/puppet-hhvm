@@ -2,6 +2,12 @@
 # This module manages hhvm packages.
 class hhvm::install::package {
 
+  if($hhvm::use_nightly) {
+    $hhvm_package_name = 'hhvm-nightly'
+  } else {
+    $hhvm_package_name = 'hhvm'
+  }
+  
   case $operatingsystem {
     debian,ubuntu: {
       if($hhvm::compile_from_source) {
@@ -30,17 +36,9 @@ class hhvm::install::package {
             require => Apt::Key["2048R/1BE7A449"]
         }
 
-        if($hhvm::use_nightly) {
-	        package { "hhvm-nightly": 
-	          ensure => installed,
-	          require => Apt::Repository["hhvm"]
-	        }
-        
-        } else {
-          package { "hhvm": 
-            ensure => installed,
-            require => Apt::Repository["hhvm"]
-          }
+        package { $hhvm_package_name: 
+          ensure => installed,
+          require => Apt::Repository["hhvm"]
         }
 			}   
     }

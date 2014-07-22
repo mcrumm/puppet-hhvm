@@ -16,7 +16,7 @@ class hhvm::service (
         ensure    => 'running',
         hasstatus => true,
         enable    => true,
-        require   => Package["hhvm"]
+        require   => Package[$hhvm::install::package::hhvm_package_name]
     }
   }
 }
