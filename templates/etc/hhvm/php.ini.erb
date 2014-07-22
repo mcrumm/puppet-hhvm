@@ -15,3 +15,10 @@ hhvm.mysql.typed_results = <%= scope.lookupvar('hhvm::params::typed_results') %>
     extension=<%= extension %>;
     <%- end -%>
 <% end %>
+
+; environment variables
+<% if scope.lookupvar("hhvm::environment_vars") %>
+    <%- scope.lookupvar("hhvm::environment_vars").each do |environment_var| -%>
+    <%= environment_var %>;
+    <%- end -%>
+<% end %>

@@ -28,7 +28,8 @@ class hhvm(
   $debugger_port = $hhvm::params::debugger_port,
   $admin_server_password = $hhvm::params::admin_server_password,
 
-  $extensions        = []
+  $extensions        = [],
+  $environment_vars  = [],
 
 ) inherits hhvm::params {
   
