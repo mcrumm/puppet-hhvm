@@ -12,9 +12,11 @@ hhvm.mysql.typed_results = <%= scope.lookupvar('hhvm::params::typed_results') %>
 <% if scope.lookupvar("hhvm::php_ini_cfg_append") -%>
   <%
   php_ini_cfg_append = scope.lookupvar('hhvm::php_ini_cfg_append')
-  -%> 
+  -%>
+  <% if has_variable?("php_ini_cfg_append") %>< % then %>
 ;additional options
 	<% php_ini_cfg_append.each_pair do |key, val| -%>
 	<%= key %>=<%= val %>
 	<% end -%>
+  <% end %>
 <% end -%>
