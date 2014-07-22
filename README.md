@@ -8,17 +8,23 @@ The default settings are to listen on a socket at: /var/run/hhvm/hhvm.pid. You c
 Usage:
 ======
 
-The module by default will compile HipHop VM from source.
-
-Puppet will most likely time out but the compilation will continue in the background.
+The module by default will install HipHop VM from a package.
 
 class { "hhvm": }
 
-To use a package instead (from dl.hhvm.com repo):
+To use a nightly instead:
 
 class { "hhvm": 
-	compile_from_source => false,
+	use_nightly => true
 }
+
+To compile from source instead:
+
+class { "hhvm": 
+	compile_from_source => true,
+}
+
+Puppet will most likely time out but the compilation will continue in the background.
 
 Additional options are supported, take a look at init.pp:
 
