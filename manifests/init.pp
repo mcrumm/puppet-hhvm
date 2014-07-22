@@ -39,6 +39,9 @@ class hhvm(
 	    $path_to_hhvm = '/usr/bin/hhvm'
 	  }
   
+    validate_array($extensions)
+    validate_array($environment_vars)
+    
     class { 'hhvm::config': }
 	  class { 'hhvm::install::package': }
 	  class { 'hhvm::install::build': }
