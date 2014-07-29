@@ -42,5 +42,15 @@ class hhvm::install::prerequisites(
 
   package { $ubuntu_packages:
     ensure => 'present',
-  } 
+  }
+  
+  # Optional packages
+  $optional_ubuntu_packages = [
+  
+      'libsnappy-dev'  
+  ]
+
+  package { $optional_ubuntu_packages:
+    ensure => 'present',
+  }
 }
