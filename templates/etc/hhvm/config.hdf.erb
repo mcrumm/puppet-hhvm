@@ -1,19 +1,15 @@
 <% if @config_hdf_env_append and !@config_hdf_env_append.empty? %>
-	<% if @config_hdf_env_append.is_a?(Array) %>
 EnvVariables {
-		<% @config_hdf_env_append.each_pair do |key, val| -%>
-			<%= key %> = <%= val %>
-		<% end -%>
+	<% @config_hdf_env_append.each_pair do |key, val| -%>
+		<%= key %> = <%= val %>
+	<% end -%>
 }
-	<% end %>
 <% end %>
 
 <% if @config_hdf_dyn_ext_append and !@config_hdf_dyn_ext_append.empty? %>
-  	<% if @config_hdf_dyn_ext_append.is_a?(Array) %>
 DynamicExtensions {
-		<% @config_hdf_dyn_ext_append.each_pair do |key, val| -%>
-			<%= key %> = <%= val %>
-		<% end -%>
+	<% @config_hdf_dyn_ext_append.each_pair do |key, val| -%>
+		<%= key %> = <%= val %>
+	<% end -%>
 }
-	<% end %>
 <% end %>
