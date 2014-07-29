@@ -6,4 +6,5 @@ PIDFILE=<%= scope.lookupvar('hhvm::params::pid') %>
 JITREPO=<%= scope.lookupvar('hhvm::params::jit_repo') %>
 CONFIG_FILE="/etc/hhvm/server.ini"
 SYSTEM_CONFIG_FILE="/etc/hhvm/php.ini"
-ARGS="-c /etc/hhvm/php.ini -c /etc/hhvm/server.ini -u ${USER}"
+HDF_CONFIG_FILE="/etc/hhvm/config.hdf"
+ARGS="-c /etc/hhvm/php.ini -c /etc/hhvm/server.ini -c /etc/hhvm/config.hdf -u ${USER}"

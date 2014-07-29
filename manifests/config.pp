@@ -61,6 +61,13 @@ class hhvm::config inherits hhvm::params {
         content => template("${module_name}/etc/hhvm/php.ini.erb"),
     }
     
+    file { '/etc/hhvm/config.hdf':
+        ensure  => 'file',
+        owner   => 'root',
+        group   => 'root',
+        content => template("${module_name}/etc/hhvm/config.hdf.erb"),
+    }
+    
     /* this is only needed for www-data */
     file { '/var/www/.hhvm.hhbc':
         ensure  => 'file',

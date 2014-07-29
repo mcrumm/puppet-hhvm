@@ -28,8 +28,11 @@ class hhvm(
   $debugger_port = $hhvm::params::debugger_port,
   $admin_server_password = $hhvm::params::admin_server_password,
 
-  $php_ini_cfg_append       = undef
+  $php_ini_cfg_append             = undef,
 
+  $config_hdf_env_append          = undef,
+  $config_hdf_dyn_ext_append      = undef
+  
 ) inherits hhvm::params {
   
     if($compile_from_source) {
@@ -40,6 +43,14 @@ class hhvm(
   
     if ($php_ini_cfg_append != undef) {
       validate_hash($php_ini_cfg_append)
+    }
+    
+    if ($config_hdf_env_append != undef) {
+      validate_hash($config_hdf_env_append)
+    }
+    
+    if ($config_hdf_dyn_ext_append != undef) {
+      validate_hash($config_hdf_dyn_ext_append)
     }
     
     class { 'hhvm::config': }
