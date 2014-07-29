@@ -17,6 +17,6 @@ umask 022
 env SERVER=<%= scope.lookupvar('hhvm::path_to_hhvm') %>
 env CONFIG_FILE="/etc/hhvm/server.ini"
 env SYSTEM_CONFIG_FILE="/etc/hhvm/php.ini"
-env HDF_CONFIG_FILE="/etc/hhvm/php.ini"
+env HDF_CONFIG_FILE="/etc/hhvm/config.hdf"
 env RUN_AS=www-data
 exec $SERVER -m daemon --config $CONFIG_FILE --config $SYSTEM_CONFIG_FILE --config $HDF_CONFIG_FILE --user $RUN_AS
