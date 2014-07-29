@@ -1,6 +1,6 @@
 <% if @config_hdf_env_append -%>
 	;environment variables
-	<% !@config_hdf_env_append.empty? -%>
+	<% if !@config_hdf_env_append.empty? -%>
 	EnvVariables {
 		<% @config_hdf_env_append.each do |key, val| -%>
 			<%= key %> = <%= val %>
