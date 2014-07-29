@@ -1,5 +1,4 @@
 <% if scope.lookupvar('hhvm::config_hdf_env_append') -%>
-	;environment variables
 	<% if !scope.lookupvar('hhvm::config_hdf_env_append').empty? -%>
 	EnvVariables {
 		<% scope.lookupvar('hhvm::config_hdf_env_append').each do |key, val| -%>
