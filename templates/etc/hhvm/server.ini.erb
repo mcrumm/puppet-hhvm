@@ -38,3 +38,9 @@ hhvm.debugger.enable_debugger = <%= scope.lookupvar('hhvm::enable_debugger') %>
 hhvm.debugger.enable_debugger_server = <%= scope.lookupvar('hhvm::enable_debugger_server') %>
 hhvm.debugger.port = <%= scope.lookupvar('hhvm::params::debugger_port') %>
 hhvm.debugger.default_sandbox_path = <%= scope.lookupvar('hhvm::source_root') %>
+
+<% if scope.lookupvar('hhvm::server_ini_cfg_append') and !scope.lookupvar('hhvm::server_ini_cfg_append').empty? -%>
+	<% scope.lookupvar('hhvm::server_ini_cfg_append').each do |key, val| -%>
+		<%= key %>=<%= val %>
+	<% end -%>
+<% end -%>

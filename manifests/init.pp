@@ -29,7 +29,8 @@ class hhvm(
   $admin_server_password = $hhvm::params::admin_server_password,
 
   $php_ini_cfg_append             = {},
-
+  $server_ini_cfg_append          = {},
+  
   $config_hdf_env_append          = {},
   $config_hdf_dyn_ext_append      = {}
   
