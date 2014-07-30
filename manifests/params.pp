@@ -54,9 +54,9 @@ class hhvm::params {
   $typed_results = false
 
   # PHP Settings
-  $date_timezone = undef
-  $max_post_size = undef
-  $upload_max_file_size = undef
+  $date_timezone = ''
+  $max_post_size = ''
+  $upload_max_file_size = ''
   
   # Further settings to translate?
   #   display_errors      => 'On', # no such setting?

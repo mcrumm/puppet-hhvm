@@ -1,17 +1,17 @@
 <% if scope.lookupvar('hhvm::config_hdf_env_append') -%>
 	<% if !scope.lookupvar('hhvm::config_hdf_env_append').empty? -%>
-	EnvVariables {
+EnvVariables {
 		<% scope.lookupvar('hhvm::config_hdf_env_append').each do |key, val| -%>
-			<%= key %> = <%= val %>
+	<%= key %> = <%= val %>
 		<% end -%>
-	}
+}
 	<% end -%>
 <% end -%>
 
 <% if scope.lookupvar('hhvm::config_hdf_dyn_ext_append') and !scope.lookupvar('hhvm::config_hdf_dyn_ext_append').empty? -%>
 DynamicExtensions {
 	<% scope.lookupvar('hhvm::config_hdf_dyn_ext_append').each do |key, val| -%>
-		<%= key %> = <%= val %>
+	<%= key %> = <%= val %>
 	<% end -%>
 }
 <% end -%>

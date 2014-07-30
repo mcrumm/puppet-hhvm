@@ -1,5 +1,5 @@
 ;php options
-<% if scope.lookupvar("hhvm::date_timezone") %>
+<% if scope.lookupvar("hhvm::date_timezone") != '' %>
 date.timezone = <%= scope.lookupvar('hhvm::date_timezone') %>
 <% end %>
 
@@ -12,7 +12,7 @@ hhvm.mysql.typed_results = <%= scope.lookupvar('hhvm::params::typed_results') %>
 <% if scope.lookupvar('hhvm::php_ini_cfg_append') and !scope.lookupvar('hhvm::php_ini_cfg_append').empty? -%>
 ;additional options
 	<% scope.lookupvar('hhvm::php_ini_cfg_append').each do |key, val| -%>
-		<%= key %>=<%= val %>
+<%= key %>=<%= val %>
 	<% end -%>
 <% end -%>
   

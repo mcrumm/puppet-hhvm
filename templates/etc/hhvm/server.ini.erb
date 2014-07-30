@@ -41,6 +41,6 @@ hhvm.debugger.default_sandbox_path = <%= scope.lookupvar('hhvm::source_root') %>
 
 <% if scope.lookupvar('hhvm::server_ini_cfg_append') and !scope.lookupvar('hhvm::server_ini_cfg_append').empty? -%>
 	<% scope.lookupvar('hhvm::server_ini_cfg_append').each do |key, val| -%>
-		<%= key %>=<%= val %>
+<%= key %>=<%= val %>
 	<% end -%>
 <% end -%>
