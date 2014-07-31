@@ -6,9 +6,16 @@ hhvm.server.port = <%= scope.lookupvar('hhvm::port') %>
 hhvm.server.file_socket= <%= scope.lookupvar('hhvm::params::socket') %>
 hhvm.server.type = <%= scope.lookupvar('hhvm::params::server_type') %>
 hhvm.server.default_document = <%= scope.lookupvar('hhvm::params::default_document') %>
+
+; logging settings
 hhvm.log.use_log_file = <%= scope.lookupvar('hhvm::params::use_log_file') %>
 hhvm.log.file = <%= scope.lookupvar('hhvm::params::error_log') %>
 hhvm.log.header = true
+hhvm.log.level = <%= scope.lookupvar('hhvm::params::log_level') %>
+hhvm.log.always_log_unhandled_exceptions = <%= scope.lookupvar('hhvm::params::always_log_unhandled_exceptions') %>
+hhvm.log.runtime_error_reporting_level = <%= scope.lookupvar('hhvm::params::runtime_error_reporting_level') %>
+
+hhvm.mysql.typed_results = <%= scope.lookupvar('hhvm::params::typed_results') %>
 hhvm.repo.central.path = <%= scope.lookupvar('hhvm::params::jit_repo') %>
 hhvm.server.source_root = <%= scope.lookupvar('hhvm::params::source_root') %>
 
