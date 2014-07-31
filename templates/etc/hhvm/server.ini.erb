@@ -8,6 +8,7 @@ hhvm.server.type = <%= scope.lookupvar('hhvm::params::server_type') %>
 hhvm.server.default_document = <%= scope.lookupvar('hhvm::params::default_document') %>
 hhvm.log.use_log_file = <%= scope.lookupvar('hhvm::params::use_log_file') %>
 hhvm.log.file = <%= scope.lookupvar('hhvm::params::error_log') %>
+hhvm.log.header = true
 hhvm.repo.central.path = <%= scope.lookupvar('hhvm::params::jit_repo') %>
 hhvm.server.source_root = <%= scope.lookupvar('hhvm::params::source_root') %>
 
