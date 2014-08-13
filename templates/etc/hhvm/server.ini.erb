@@ -34,6 +34,9 @@ hhvm.admin_server.password = <%= scope.lookupvar('hhvm::admin_server_password') 
 hhvm.admin_server.port = <%= scope.lookupvar('hhvm::params::admin_server_port') %>
 hhvm.admin_server.thread_count = <%= scope.lookupvar('hhvm::params::admin_server_thread_count') %>
 
+; required for magento2
+hhvm.libxml.ext_entity_whitelist = "file"
+
 ; apc
 hhvm.server.apc.enable_apc = <%= scope.lookupvar('hhvm::params::enable_apc') %>
 
