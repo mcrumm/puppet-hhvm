@@ -5,7 +5,7 @@ date.timezone = <%= scope.lookupvar('hhvm::date_timezone') %>
 
 <% if scope.lookupvar('hhvm::php_ini_cfg_append') and !scope.lookupvar('hhvm::php_ini_cfg_append').empty? -%>
 ;additional options
-	<% scope.lookupvar('hhvm::php_ini_cfg_append').each do |key, val| -%>
+	<% scope.lookupvar('hhvm::php_ini_cfg_append').sort_by {|k,v| k}.each do |key, val| -%>
 <%= key %>=<%= val %>
 	<% end -%>
 <% end -%>

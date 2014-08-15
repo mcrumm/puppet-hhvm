@@ -10,7 +10,7 @@ EnvVariables {
 
 <% if scope.lookupvar('hhvm::config_hdf_dyn_ext_append') and !scope.lookupvar('hhvm::config_hdf_dyn_ext_append').empty? -%>
 DynamicExtensions {
-	<% scope.lookupvar('hhvm::config_hdf_dyn_ext_append').each do |key, val| -%>
+	<% scope.lookupvar('hhvm::config_hdf_dyn_ext_append').sort_by {|k,v| k}.each do |key, val| -%>
 	<%= key %> = <%= val %>
 	<% end -%>
 }
