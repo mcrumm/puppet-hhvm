@@ -28,6 +28,8 @@ class hhvm(
   $debugger_port = $hhvm::params::debugger_port,
   $admin_server_password = $hhvm::params::admin_server_password,
 
+  $limit = $hhvm::params::limit,
+
   $php_ini_cfg_append             = {},
   $server_ini_cfg_append          = {},
   

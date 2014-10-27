@@ -58,8 +58,10 @@ class hhvm::params {
   $max_post_size = ''
   $upload_max_file_size = ''
   
+  $limit = 50000
+  
   # Further settings to translate?
   #   display_errors      => 'On', # no such setting?
   #   max_execution_time  => '600', # no such setting?
-  #   max_input_vars      => '3000', # no such setting?   
+  #   max_input_vars      => '3000', # no such setting?
 }
