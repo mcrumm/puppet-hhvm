@@ -13,6 +13,10 @@ respawn limit 10 5
 umask 022
 limit nofile <%= scope.lookupvar('hhvm::limit') %> <%= scope.lookupvar('hhvm::limit') %>
 
+post-stop script
+    /bin/rm -f <%= scope.lookupvar('hhvm::params::pid') %> <%= scope.lookupvar('hhvm::params::socket') %>
+end script
+
 # Location of config and executable
 
 env SERVER=<%= scope.lookupvar('hhvm::path_to_hhvm') %>
