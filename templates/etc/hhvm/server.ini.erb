@@ -1,5 +1,5 @@
 ; php options
-pid = <%= scope.lookupvar('hhvm::service::pid') %>
+pid = <%= @pid %>
 
 ; hhvm specific
 hhvm.server.port = <%= scope.lookupvar('hhvm::service::port') %>
