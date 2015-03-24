@@ -9,7 +9,7 @@ class hhvm::service (
   $source_root = $hhvm::params::source_root
 ) {
   # maintain compatibility with existing nginx setups
-  $port = regsubst("/var/run/hhvm/hhvm_$port.sock","(_$hhvm::params::port)",'','G')
+  $socket = regsubst("/var/run/hhvm/hhvm_$port.sock","(_$hhvm::params::port)",'','G')
   $default="/etc/default/hhvm_$port" 
   $server_ini="/etc/hhvm/server_$port.ini"
   $php_ini="/etc/hhvm/php_$port.ini"
