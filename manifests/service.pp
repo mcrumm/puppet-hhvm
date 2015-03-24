@@ -88,10 +88,9 @@ class hhvm::service (
         enable    => true,
         require   => Package[$hhvm::install::package::hhvm_package_name]
     }
-  }
-  
-  # stop default hhvm service supplied by the package as is it not multi-port aware
-  service { "hhvm":
-    ensure  => "stopped"
+    # stop default hhvm service supplied by the package as is it not multi-port aware
+    service { "hhvm":
+      ensure  => "stopped"
+    }
   }
 }
