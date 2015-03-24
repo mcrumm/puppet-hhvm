@@ -8,8 +8,6 @@ class hhvm::service (
   $admin_server_port = $hhvm::params::admin_server_port,
   $source_root = $hhvm::params::source_root
 ) {
-  require hhvm
- 
   $default="/etc/default/hhvm_$port" 
   $server_ini="/etc/hhvm/server_$port.ini"
   $php_ini="/etc/hhvm/php_$port.ini"
@@ -26,14 +24,14 @@ class hhvm::service (
     $socket = "/var/run/hhvm/hhvm_$port.sock"
   }
 
-  file { "/etc/default/hhvm_$::port":
+  file { "/etc/default/hhvm_$port":
     ensure  => 'file',
     owner   => 'root',
     group   => 'root',
     content => template("${module_name}/etc/default/hhvm.erb"),
   }
   
-  file { "/etc/init.d/hhvm_$::port":
+  file { "/etc/init.d/hhvm_$port":
     ensure  => 'file',
     mode    => '0755',
     owner   => 'root',
@@ -41,35 +39,35 @@ class hhvm::service (
     content => template("${module_name}/etc/init.d/hhvm.erb"),
   }
           
-  file { "/etc/init/hhvm_$::port.conf":
+  file { "/etc/init/hhvm_$port.conf":
     ensure  => 'file',
     owner   => 'root',
     group   => 'root',
     content => template("${module_name}/etc/init/hhvm.conf.erb")
   }
 
-  file { "/etc/hhvm/cli_$::port.ini":
+  file { "/etc/hhvm/cli_$port.ini":
     ensure  => 'file',
     owner   => 'root',
     group   => 'root',
     content => template("${module_name}/etc/hhvm/cli.ini.erb"),
   }
     
-  file { "/etc/hhvm/server_$::port.ini":
+  file { "/etc/hhvm/server_$port.ini":
     ensure  => 'file',
     owner   => 'root',
     group   => 'root',
     content => template("${module_name}/etc/hhvm/server.ini.erb"),
   }
     
-  file { "/etc/hhvm/php_$::port.ini":
+  file { "/etc/hhvm/php_$port.ini":
     ensure  => 'file',
     owner   => 'root',
     group   => 'root',
     content => template("${module_name}/etc/hhvm/php.ini.erb"),
   }
     
-  file { "/etc/hhvm/config_$::port.hdf":
+  file { "/etc/hhvm/config_$port.hdf":
     ensure  => 'file',
     owner   => 'root',
     group   => 'root',
@@ -77,14 +75,14 @@ class hhvm::service (
   }
   
   if ($hhvm::compile_from_source) {
-    service { "hhvm_$::port":
+    service { "hhvm_$port":
         ensure    => $::ensure,
         hasstatus => true,
         enable    => true,
         require   => Exec['Use build-hhvm.sh']
     }
   } else {
-    service { "hhvm_$::port":
+    service { "hhvm_$port":
         ensure    => $::ensure,
         hasstatus => true,
         enable    => true,
