@@ -7,7 +7,7 @@ define hhvm::service (
   $admin_server_port = $hhvm::params::admin_server_port,
   $source_root = $hhvm::params::source_root
 ) {
-  require hhvm
+  include ::hhvm
   
   $port = $title
     
