@@ -14,9 +14,9 @@ class { "hhvm": }
 
 To launch multiple hhvm instances on seperate ports and sockets:
 
-class { "hhvm::service": port => 9001 }
+hhvm::service { "9001": }
 
-class { "hhvm::service": port => 9002 }
+hhvm::service { "9002": }
 
 To use a nightly instead:
 
