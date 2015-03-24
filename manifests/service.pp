@@ -1,13 +1,14 @@
 # == Class: hhvm::service
 #
 # This class mangaes the hhvm service on multiple ports
-class hhvm::service (
+define hhvm::service (
   $ensure = 'running',
-  $port = $hhvm::params::port,
   $debugger_port = $hhvm::params::debugger_port,
   $admin_server_port = $hhvm::params::admin_server_port,
   $source_root = $hhvm::params::source_root
 ) {
+  $port = $title
+    
   # maintain compatibility with existing nginx setups
   $socket = regsubst("/var/run/hhvm/hhvm_$port.sock","(_$hhvm::params::port)",'','G')
   $service = regsubst("hhvm_$port" ,"(_$hhvm::params::port)",'','G')

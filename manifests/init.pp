@@ -68,9 +68,8 @@ class hhvm(
 	class { 'hhvm::install::build': }
 	  
 	# create default server, port 9000
-	class { 'hhvm::service':
+	hhvm::service { $port_final: 
 	 ensure => $ensure,
-   port => $port_final,
    debugger_port => $debugger_port_final,
    admin_server_port => $admin_server_port_final,
    source_root => $source_root_final
@@ -83,6 +82,6 @@ class hhvm(
 	Class['hhvm::config'] ->
 	Class['hhvm::install::package'] ->
 	Class['hhvm::install::build'] ->
-	Class['hhvm::service'] ->
+	Define['hhvm::service'] ->
 	Anchor['hhvm::end']
 }
