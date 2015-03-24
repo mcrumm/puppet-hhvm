@@ -8,6 +8,8 @@ class hhvm::service (
   $admin_server_port = $hhvm::params::admin_server_port,
   $source_root = $hhvm::params::source_root
 ) {
+  # maintain compatibility with existing nginx setups
+  $port = regsubst("/var/run/hhvm/hhvm_$port.sock","(_$hhvm::params::port)",'','G')
   $default="/etc/default/hhvm_$port" 
   $server_ini="/etc/hhvm/server_$port.ini"
   $php_ini="/etc/hhvm/php_$port.ini"
@@ -16,13 +18,6 @@ class hhvm::service (
   $error_log = "/var/log/hhvm/error_$port.log"
   $pid = "/var/run/hhvm/hhvm_$port.pid"
   $admin_server_log = "/var/log/hhvm/admin_$port.log"
-
-  # maintain compatibility with existing nginx setups
-  if($port == 9000) {
-    $socket = "/var/run/hhvm/hhvm.sock"
-  } else {
-    $socket = "/var/run/hhvm/hhvm_$port.sock"
-  }
 
   file { "/etc/default/hhvm_$port":
     ensure  => 'file',
@@ -81,7 +76,7 @@ class hhvm::service (
         enable    => true,
         require   => Package[$hhvm::install::package::hhvm_package_name]
     }
-    # stop default hhvm service supplied by the package as is it not multi-port aware
+    # stop default hhvm service supplied by the package as is it's configuration is not multi-port aware
     service { "hhvm":
       ensure  => "stopped",
       enable  => false,

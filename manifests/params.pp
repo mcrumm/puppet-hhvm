@@ -28,6 +28,9 @@ class hhvm::params {
   $enable_debugger_server = false
   $debugger_port = 8089
   
+  # Error log for cli
+  $error_log = "/var/log/hhvm/error.log"
+  
   # Admin server
   $admin_server_port = 8088
   $admin_server_thread_count = 1
