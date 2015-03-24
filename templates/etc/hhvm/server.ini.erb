@@ -2,22 +2,22 @@
 pid = <%= @pid %>
 
 ; hhvm specific
-hhvm.server.port = <%= scope.lookupvar('hhvm::service::port') %>
-hhvm.server.file_socket= <%= scope.lookupvar('hhvm::service::socket') %>
+hhvm.server.port = <%= @port %>
+hhvm.server.file_socket= <%= @socket %>
 hhvm.server.type = <%= scope.lookupvar('hhvm::params::server_type') %>
 hhvm.server.default_document = <%= scope.lookupvar('hhvm::params::default_document') %>
 
 ; logging settings
 hhvm.log.use_log_file = <%= scope.lookupvar('hhvm::params::use_log_file') %>
-hhvm.log.file = <%= scope.lookupvar('hhvm::service::error_log') %>
+hhvm.log.file = <%= @error_log %>
 hhvm.log.header = true
 hhvm.log.level = <%= scope.lookupvar('hhvm::params::log_level') %>
 hhvm.log.always_log_unhandled_exceptions = <%= scope.lookupvar('hhvm::params::always_log_unhandled_exceptions') %>
 hhvm.log.runtime_error_reporting_level = <%= scope.lookupvar('hhvm::params::runtime_error_reporting_level') %>
 
 hhvm.mysql.typed_results = <%= scope.lookupvar('hhvm::params::typed_results') %>
-hhvm.repo.central.path = <%= scope.lookupvar('hhvm::service::jit_repo') %>
-hhvm.server.source_root = <%= scope.lookupvar('hhvm::service::source_root') %>
+hhvm.repo.central.path = <%= @jit_repo %>
+hhvm.server.source_root = <%= @source_root %>
 
 ; php compatibility
 hhvm.server.allow_duplicate_cookies = <%= scope.lookupvar('hhvm::params::allow_duplicate_cookies') %>
@@ -25,13 +25,13 @@ hhvm.enable_obj_destruct_call = 1
 hhvm.enable_zend_sorting = 1
 
 ; logging
-hhvm.log.admin_log.file = <%= scope.lookupvar('hhvm::service::admin_server_log') %>
+hhvm.log.admin_log.file = <%= @admin_server_log %>
 
 ; admin server
 <% if scope.lookupvar("hhvm::admin_server_password") != '' %>
 hhvm.admin_server.password = <%= scope.lookupvar('hhvm::admin_server_password') %>
 <% end %>
-hhvm.admin_server.port = <%= scope.lookupvar('hhvm::service::admin_server_port') %>
+hhvm.admin_server.port = <%= @admin_server_port %>
 hhvm.admin_server.thread_count = <%= scope.lookupvar('hhvm::params::admin_server_thread_count') %>
 
 ; required for magento2
@@ -48,7 +48,7 @@ hhvm.jit_warmup_requests = <%= scope.lookupvar('hhvm::jit_warmup_requests') %>
 hhvm.debugger.enable_debugger = <%= scope.lookupvar('hhvm::enable_debugger') %>
 hhvm.debugger.enable_debugger_server = <%= scope.lookupvar('hhvm::enable_debugger_server') %>
 hhvm.debugger.port = <%= scope.lookupvar('hhvm::service::debugger_port') %>
-hhvm.debugger.default_sandbox_path = <%= scope.lookupvar('hhvm::service::source_root') %>
+hhvm.debugger.default_sandbox_path = <%= @service::source_root %>
 
 <% if scope.lookupvar('hhvm::server_ini_cfg_append') and !scope.lookupvar('hhvm::server_ini_cfg_append').empty? -%>
 	<% scope.lookupvar('hhvm::server_ini_cfg_append').sort_by {|k,v| k}.each do |key, val| -%>

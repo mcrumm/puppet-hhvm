@@ -1,10 +1,10 @@
 MODE=daemon
 USER=<%= scope.lookupvar('hhvm::params::hhvm_user') %>
-SOCK=<%= scope.lookupvar('hhvm::service::socket') %>
-PORT=<%= scope.lookupvar('hhvm::service::port') %>
-PIDFILE=<%= scope.lookupvar('hhvm::service::pid') %>
-JITREPO=<%= scope.lookupvar('hhvm::service::jit_repo') %>
-CONFIG_FILE="<%= scope.lookupvar('hhvm::service::server_ini') %>"
-SYSTEM_CONFIG_FILE="<%= scope.lookupvar('hhvm::service::php_ini') %>"
-HDF_CONFIG_FILE="<%= scope.lookupvar('hhvm::service::config_hdf') %>"
-ARGS="-c <%= scope.lookupvar('hhvm::service::php_ini') %> -c <%= scope.lookupvar('hhvm::service::server_ini') %> -c <%= scope.lookupvar('hhvm::service::config_hdf') %> -u <%= scope.lookupvar('hhvm::params::hhvm_user') %>"
+SOCK=<%= @socket %>
+PORT=<%= @port %>
+PIDFILE=<%= @pid %>
+JITREPO=<%= @jit_repo %>
+CONFIG_FILE="<%= @server_ini %>"
+SYSTEM_CONFIG_FILE="<%= @php_ini %>"
+HDF_CONFIG_FILE="<%= @config_hdf %>"
+ARGS="-c <%= @php_ini %> -c <%= @server_ini %> -c <%= @config_hdf %> -u <%= scope.lookupvar('hhvm::params::hhvm_user') %>"
