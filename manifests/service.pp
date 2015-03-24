@@ -16,9 +16,15 @@ class hhvm::service (
   $config_hdf="/etc/hhvm/config_$port.hdf"
   $jit_repo = "/tmp/.hhvm_$port.hhbc"
   $error_log = "/var/log/hhvm/error_$port.log"
-  $socket = "/var/run/hhvm/hhvm_$port.sock"
   $pid = "/var/run/hhvm/hhvm_$port.pid"
   $admin_server_log = "/var/log/hhvm/admin_$port.log"
+
+  # maintain compatibility with existing nginx setups
+  if($port == 9000) {
+    $socket = "/var/run/hhvm/hhvm.sock"
+  } else {
+    $socket = "/var/run/hhvm/hhvm_$port.sock"
+  }
 
   file { "/etc/default/hhvm_$::port":
     ensure  => 'file',
