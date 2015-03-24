@@ -10,23 +10,26 @@ class hhvm::service (
 ) {
   # maintain compatibility with existing nginx setups
   $socket = regsubst("/var/run/hhvm/hhvm_$port.sock","(_$hhvm::params::port)",'','G')
-  $default="/etc/default/hhvm_$port" 
-  $server_ini="/etc/hhvm/server_$port.ini"
-  $php_ini="/etc/hhvm/php_$port.ini"
-  $config_hdf="/etc/hhvm/config_$port.hdf"
-  $jit_repo = "/tmp/.hhvm_$port.hhbc"
-  $error_log = "/var/log/hhvm/error_$port.log"
-  $pid = "/var/run/hhvm/hhvm_$port.pid"
-  $admin_server_log = "/var/log/hhvm/admin_$port.log"
+  $service = regsubst("hhvm_$port" ,"(_$hhvm::params::port)",'','G')
+  $default = regsubst("/etc/default/hhvm_$port" ,"(_$hhvm::params::port)",'','G')
+  $init_d = regsubst("etc/init.d/hhvm_$port" ,"(_$hhvm::params::port)",'','G')
+  $init = regsubst("/etc/init/hhvm_$port.conf","(_$hhvm::params::port)",'','G')
+  $server_ini = regsubst("/etc/hhvm/server_$port.ini","(_$hhvm::params::port)",'','G')
+  $php_ini = regsubst("/etc/hhvm/php_$port.ini","(_$hhvm::params::port)",'','G')
+  $config_hdf = regsubst("/etc/hhvm/config_$port.hdf","(_$hhvm::params::port)",'','G')
+  $jit_repo = regsubst("/tmp/.hhvm_$port.hhbc","(_$hhvm::params::port)",'','G')
+  $error_log = regsubst("/var/log/hhvm/error_$port.log","(_$hhvm::params::port)",'','G')
+  $pid = regsubst("/var/run/hhvm/hhvm_$port.pid","(_$hhvm::params::port)",'','G')
+  $admin_server_log = regsubst("/var/log/hhvm/admin_$port.log","(_$hhvm::params::port)",'','G')
 
-  file { "/etc/default/hhvm_$port":
+  file { $default:
     ensure  => 'file',
     owner   => 'root',
     group   => 'root',
     content => template("${module_name}/etc/default/hhvm.erb"),
   }
   
-  file { "/etc/init.d/hhvm_$port":
+  file { $init_d:
     ensure  => 'file',
     mode    => '0755',
     owner   => 'root',
@@ -34,28 +37,28 @@ class hhvm::service (
     content => template("${module_name}/etc/init.d/hhvm.erb"),
   }
           
-  file { "/etc/init/hhvm_$port.conf":
+  file { $init:
     ensure  => 'file',
     owner   => 'root',
     group   => 'root',
     content => template("${module_name}/etc/init/hhvm.conf.erb")
   }
 
-  file { "/etc/hhvm/server_$port.ini":
+  file { $server_ini:
     ensure  => 'file',
     owner   => 'root',
     group   => 'root',
     content => template("${module_name}/etc/hhvm/server.ini.erb"),
   }
     
-  file { "/etc/hhvm/php_$port.ini":
+  file { $php_ini:
     ensure  => 'file',
     owner   => 'root',
     group   => 'root',
     content => template("${module_name}/etc/hhvm/php.ini.erb"),
   }
     
-  file { "/etc/hhvm/config_$port.hdf":
+  file { $config_hdf:
     ensure  => 'file',
     owner   => 'root',
     group   => 'root',
@@ -63,23 +66,23 @@ class hhvm::service (
   }
   
   if ($hhvm::compile_from_source) {
-    service { "hhvm_$port":
+    service { $service:
         ensure    => $::ensure,
         hasstatus => true,
         enable    => true,
         require   => Exec['Use build-hhvm.sh']
     }
   } else {
-    service { "hhvm_$port":
+    service { $service:
         ensure    => $ensure,
         hasstatus => true,
         enable    => true,
         require   => Package[$hhvm::install::package::hhvm_package_name]
     }
     # stop default hhvm service supplied by the package as is it's configuration is not multi-port aware
-    service { "hhvm":
-      ensure  => "stopped",
-      enable  => false,
-    }
+    #service { "hhvm":
+    #  ensure  => "stopped",
+    #  enable  => false,
+    #}
   }
 }
