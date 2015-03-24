@@ -82,6 +82,5 @@ class hhvm(
 	Class['hhvm::config'] ->
 	Class['hhvm::install::package'] ->
 	Class['hhvm::install::build'] ->
-	Define['hhvm::service'] ->
 	Anchor['hhvm::end']
 }
