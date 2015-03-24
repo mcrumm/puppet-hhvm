@@ -12,7 +12,7 @@ class hhvm::service (
   $socket = regsubst("/var/run/hhvm/hhvm_$port.sock","(_$hhvm::params::port)",'','G')
   $service = regsubst("hhvm_$port" ,"(_$hhvm::params::port)",'','G')
   $default = regsubst("/etc/default/hhvm_$port" ,"(_$hhvm::params::port)",'','G')
-  $init_d = regsubst("etc/init.d/hhvm_$port" ,"(_$hhvm::params::port)",'','G')
+  $init_d = regsubst("/etc/init.d/hhvm_$port" ,"(_$hhvm::params::port)",'','G')
   $init = regsubst("/etc/init/hhvm_$port.conf","(_$hhvm::params::port)",'','G')
   $server_ini = regsubst("/etc/hhvm/server_$port.ini","(_$hhvm::params::port)",'','G')
   $php_ini = regsubst("/etc/hhvm/php_$port.ini","(_$hhvm::params::port)",'','G')
