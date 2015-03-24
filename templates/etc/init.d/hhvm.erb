@@ -17,8 +17,8 @@ NAME=hhvm
 DESC="HipHop VM"
 
 # Include hhvm defaults if available
-if [ -f /etc/default/hhvm ]; then
-        . /etc/default/hhvm
+if [ -f <%= scope.lookupvar('hhvm::service::default') %> ]; then
+        . <%= scope.lookupvar('hhvm::service::default') %>
 fi
 
 test -x $DAEMON || exit 0

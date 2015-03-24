@@ -14,14 +14,14 @@ umask 022
 limit nofile <%= scope.lookupvar('hhvm::limit') %> <%= scope.lookupvar('hhvm::limit') %>
 
 post-stop script
-    /bin/rm -f <%= scope.lookupvar('hhvm::params::pid') %> <%= scope.lookupvar('hhvm::params::socket') %>
+    /bin/rm -f <%= scope.lookupvar('hhvm::service::pid') %> <%= scope.lookupvar('hhvm::service::socket') %>
 end script
 
 # Location of config and executable
 
 env SERVER=<%= scope.lookupvar('hhvm::path_to_hhvm') %>
-env CONFIG_FILE="/etc/hhvm/server.ini"
-env SYSTEM_CONFIG_FILE="/etc/hhvm/php.ini"
-env HDF_CONFIG_FILE="/etc/hhvm/config.hdf"
+env CONFIG_FILE="<%= scope.lookupvar('hhvm::service::server_ini') %>"
+env SYSTEM_CONFIG_FILE="<%= scope.lookupvar('hhvm::service::php_ini') %>"
+env HDF_CONFIG_FILE="<%= scope.lookupvar('hhvm::service::config_hdf') %>"
 env RUN_AS=www-data
 exec $SERVER -m daemon --config $CONFIG_FILE --config $SYSTEM_CONFIG_FILE --config $HDF_CONFIG_FILE --user $RUN_AS

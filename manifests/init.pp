@@ -12,10 +12,6 @@ class hhvm(
   $compile_from_source = false,
   $use_nightly = false,
   
-  $sourceroot = $hhvm::params::source_root,
-  
-  $port = $hhvm::params::port,
-  
   $jit_enabled = $hhvm::params::jit_enabled,
   $jit_warmup_requests = $hhvm::params::jit_warmup_requests,
   
@@ -25,7 +21,6 @@ class hhvm(
   
   $enable_debugger = $hhvm::params::enable_debugger,
   $enable_debugger_server = $hhvm::params::enable_debugger_server,
-  $debugger_port = $hhvm::params::debugger_port,
   $admin_server_password = $hhvm::params::admin_server_password,
 
   $limit = $hhvm::params::limit,
@@ -34,40 +29,60 @@ class hhvm(
   $server_ini_cfg_append          = {},
   
   $config_hdf_env_append          = {},
-  $config_hdf_dyn_ext_append      = {}
-  
+  $config_hdf_dyn_ext_append      = {},
+
+  # service (port) specific
+  $port = undef,
+  $source_root = undef,
+  $admin_server_port = undef,
+  $debugger_port = undef,
+  $ensure = "running"
+      
 ) inherits hhvm::params {
   
-    if($compile_from_source) {
-      $path_to_hhvm = '/usr/local/bin/hhvm'
-	  } else {
-	    $path_to_hhvm = '/usr/bin/hhvm'
-	  }
+  $port_final = $port ? { undef => $hhvm::params::port, default => $port }
+  $source_root_final = $source_root ? { undef => $hhvm::params::source_root, default => $source_root }
+  $admin_server_port_final = $admin_server_port ? { undef => $hhvm::params::admin_server_port, default => $admin_server_port }
+  $debugger_port_final = $debugger_port ? { undef => $hhvm::params::debugger_port, default => $debugger_port }
   
-    #if ($php_ini_cfg_append != undef) {
-    #  validate_hash($php_ini_cfg_append)
-    #}
+  if($compile_from_source) {
+    $path_to_hhvm = '/usr/local/bin/hhvm'
+	} else {
+	  $path_to_hhvm = '/usr/bin/hhvm'
+	}
+  
+  #if ($php_ini_cfg_append != undef) {
+  #  validate_hash($php_ini_cfg_append)
+  #}
     
-    #if ($config_hdf_env_append != undef) {
-    #  validate_hash($config_hdf_env_append)
-    #}
+  #if ($config_hdf_env_append != undef) {
+  #  validate_hash($config_hdf_env_append)
+  #}
     
-    #if ($config_hdf_dyn_ext_append != undef) {
-    #  validate_hash($config_hdf_dyn_ext_append)
-    #}
+  #if ($config_hdf_dyn_ext_append != undef) {
+  #  validate_hash($config_hdf_dyn_ext_append)
+  #}
     
-    class { 'hhvm::config': }
-	  class { 'hhvm::install::package': }
-	  class { 'hhvm::install::build': }
-	  class { 'hhvm::service': }
+  class { 'hhvm::config': }
+	class { 'hhvm::install::package': }
+	class { 'hhvm::install::build': }
+	  
+	# create default server, port 9000
+	class { 'hhvm::service':
+	 ensure => $ensure,
+   port => $port_final,
+   debugger_port => $debugger_port_final,
+   admin_server_port => $admin_server_port_final,
+   source_root => $source_root_final
+	}
 	
-	  anchor { 'hhvm::begin': }
-	  anchor { 'hhvm::end': }
+	anchor { 'hhvm::begin': }
+	anchor { 'hhvm::end': }
 	
-	  Anchor['hhvm::begin'] ->
-	  Class['hhvm::config'] ->
-	  Class['hhvm::install::package'] ->
-	  Class['hhvm::install::build'] ->
-	  Class['hhvm::service'] ->
-	  Anchor['hhvm::end']
+	Anchor['hhvm::begin'] ->
+	Class['hhvm::config'] ->
+	Class['hhvm::install::package'] ->
+	Class['hhvm::install::build'] ->
+	Class['hhvm::service'] ->
+	Anchor['hhvm::end']
 }

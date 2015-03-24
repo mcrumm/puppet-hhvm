@@ -45,9 +45,6 @@ class hhvm::params {
   
   # Logging
   $use_log_file = true
-  $error_log = "/var/log/hhvm/error.log"
-  $access_log = "/var/log/hhvm/access.log"
-  $admin_log = "/var/log/hhvm/admin.log"
   $log_level = 'Warning'
   $always_log_unhandled_exceptions = true
   $runtime_error_reporting_level = 8191
