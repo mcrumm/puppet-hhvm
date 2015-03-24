@@ -3,7 +3,7 @@ puppet-hhvm
 
 This module installs HHVM (the Facebook HipHop Virtual Machine) on your web server.
 
-The default settings are to listen on a socket at: /var/run/hhvm/hhvm.pid. You can use this via FastCGI in nginx or Apache to connect to it.
+The default settings are to listen on a socket at: /var/run/hhvm/hhvm.sock. You can use this via FastCGI in nginx or Apache to connect to it.
 
 Usage:
 ======
