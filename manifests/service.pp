@@ -46,13 +46,6 @@ class hhvm::service (
     content => template("${module_name}/etc/init/hhvm.conf.erb")
   }
 
-  file { "/etc/hhvm/cli_$port.ini":
-    ensure  => 'file',
-    owner   => 'root',
-    group   => 'root',
-    content => template("${module_name}/etc/hhvm/cli.ini.erb"),
-  }
-    
   file { "/etc/hhvm/server_$port.ini":
     ensure  => 'file',
     owner   => 'root',
