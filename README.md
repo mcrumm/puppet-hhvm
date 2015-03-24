@@ -8,9 +8,15 @@ The default settings are to listen on a socket at: /var/run/hhvm/hhvm.pid. You c
 Usage:
 ======
 
-The module by default will install HipHop VM from a package.
+The module by default will install HipHop VM from a package and start the service on port 9000 as well as create a socket.
 
 class { "hhvm": }
+
+To launch multiple hhvm instances on seperate ports and sockets:
+
+class { "hhvm::service": port => 9001 }
+
+class { "hhvm::service": port => 9002 }
 
 To use a nightly instead:
 
@@ -40,6 +46,14 @@ Connecting to HHVM:
 In your nginx configuration, set:
 
 fastcgi_pass   unix:/var/run/hhvm/hhvm.sock;
+
+Or if you are running multiple HHVM:
+
+fastcgi_pass   unix:/var/run/hhvm/hhvm_9001.sock;
+
+fastcgi_pass   unix:/var/run/hhvm/hhvm_9002.sock;
+
+etc.
 
 Restarting HHVM
 ===============
