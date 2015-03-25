@@ -33,7 +33,7 @@ hhvm.admin_server.password = <%= scope.lookupvar('hhvm::admin_server_password') 
 <% end %>
 <% if @admin_server_port -%>
 hhvm.admin_server.port = <%= @admin_server_port %>
-<% end %>
+<% end -%>
 hhvm.admin_server.thread_count = <%= scope.lookupvar('hhvm::params::admin_server_thread_count') %>
 
 ; required for magento2

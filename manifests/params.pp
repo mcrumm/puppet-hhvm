@@ -26,7 +26,7 @@ class hhvm::params {
   # Debug settings
   $enable_debugger = false
   $enable_debugger_server = false
-  $debugger_port = 0
+  $debugger_port = undef
   
   # Error log for cli
   $error_log = "/var/log/hhvm/error.log"
