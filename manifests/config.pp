@@ -1,8 +1,6 @@
 #
 # This module manages hhvm packages.
 class hhvm::config {
-  include hhvm::params
-  
   file { '/var/log/hhvm':
     ensure => 'directory',
     owner  => $::hhvm_user,

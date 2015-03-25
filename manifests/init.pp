@@ -38,6 +38,7 @@ class hhvm(
   $debugger_port = undef,
   $ensure = 'running'
 ) {
+  include hhvm::params
   
   $port_final = $port ? {
     undef => $hhvm::params::port,
