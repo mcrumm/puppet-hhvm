@@ -1,9 +1,6 @@
 # hhvm::params - set default options
 class hhvm::params {
 
-  # Used in compilation, not in run time
-  $number_of_processor_cores = $::physicalprocessorcount
-  
   $path_to_source_hhvm = '/usr/local/src/hiphop-php/hhvm/hphp/hhvm/hhvm'
   
   # What user should hhvm run as?
@@ -59,9 +56,7 @@ class hhvm::params {
   $typed_results = false
 
   # PHP Settings
-  $date_timezone = ''
-  $max_post_size = ''
-  $upload_max_file_size = ''
+  $date_timezone = undef
   
   $limit = 131072
   

@@ -43,12 +43,12 @@ hhvm.libxml.ext_entity_whitelist = "file"
 hhvm.server.apc.enable_apc = <%= scope.lookupvar('hhvm::params::enable_apc') %>
 
 ; jit
-hhvm.jit = <%= scope.lookupvar('hhvm::jit_enabled') %>
-hhvm.jit_warmup_requests = <%= scope.lookupvar('hhvm::jit_warmup_requests') %>
+hhvm.jit = <%= @jit_enabled %>
+hhvm.jit_warmup_requests = <%= @jit_warmup_requests %>
 
 ; debugger
-hhvm.debugger.enable_debugger = <%= scope.lookupvar('hhvm::enable_debugger') %>
-hhvm.debugger.enable_debugger_server = <%= scope.lookupvar('hhvm::enable_debugger_server') %>
+hhvm.debugger.enable_debugger = <%= @hhvm::enable_debugger %>
+hhvm.debugger.enable_debugger_server = <%= @enable_debugger_server %>
 <% if @debugger_port -%>
 hhvm.debugger.port = <%= @debugger_port %>
 <% end -%>

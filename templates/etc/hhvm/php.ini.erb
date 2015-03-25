@@ -1,7 +1,7 @@
 ;php options
-<% if scope.lookupvar("hhvm::date_timezone") != '' %>
-date.timezone = <%= scope.lookupvar('hhvm::date_timezone') %>
-<% end %>
+<% if @date_timezone -%>
+date.timezone = <%= @date_timezone %>
+<% end -%>
 
 <% if scope.lookupvar('hhvm::php_ini_cfg_append') and !scope.lookupvar('hhvm::php_ini_cfg_append').empty? -%>
 ;additional options

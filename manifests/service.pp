@@ -5,7 +5,20 @@ define hhvm::service (
   $ensure = 'running',
   $debugger_port = $hhvm::params::debugger_port,
   $admin_server_port = $hhvm::params::admin_server_port,
-  $source_root = $hhvm::params::source_root
+  
+  $source_root = $hhvm::params::source_root,
+  $jit_enabled = $hhvm::params::jit_enabled,
+  $jit_warmup_requests = $hhvm::params::jit_warmup_requests,
+  
+  $date_timezone = $hhvm::params::date_timezone,
+  $max_post_size = $hhvm::params::max_post_size,
+  $upload_max_file_size = $hhvm::params::upload_max_file_size,
+  
+  $enable_debugger = $hhvm::params::enable_debugger,
+  $enable_debugger_server = $hhvm::params::enable_debugger_server,
+  $admin_server_password = $hhvm::params::admin_server_password,
+  
+  $limit = $hhvm::params::limit
 ) {
   include ::hhvm
   
