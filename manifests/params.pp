@@ -26,13 +26,13 @@ class hhvm::params {
   # Debug settings
   $enable_debugger = false
   $enable_debugger_server = false
-  $debugger_port = 8089
+  $debugger_port = 0
   
   # Error log for cli
   $error_log = "/var/log/hhvm/error.log"
   
   # Admin server
-  $admin_server_port = 8088
+  $admin_server_port = 0
   $admin_server_thread_count = 1
   $admin_server_password = 'UyPutcu9'
   

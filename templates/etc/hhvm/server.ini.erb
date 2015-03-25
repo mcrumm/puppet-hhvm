@@ -31,7 +31,9 @@ hhvm.log.admin_log.file = <%= @admin_server_log %>
 <% if scope.lookupvar("hhvm::admin_server_password") != '' %>
 hhvm.admin_server.password = <%= scope.lookupvar('hhvm::admin_server_password') %>
 <% end %>
+<% if @admin_server_port -%>
 hhvm.admin_server.port = <%= @admin_server_port %>
+<% end %>
 hhvm.admin_server.thread_count = <%= scope.lookupvar('hhvm::params::admin_server_thread_count') %>
 
 ; required for magento2
@@ -47,7 +49,9 @@ hhvm.jit_warmup_requests = <%= scope.lookupvar('hhvm::jit_warmup_requests') %>
 ; debugger
 hhvm.debugger.enable_debugger = <%= scope.lookupvar('hhvm::enable_debugger') %>
 hhvm.debugger.enable_debugger_server = <%= scope.lookupvar('hhvm::enable_debugger_server') %>
+<% if @debugger_port -%>
 hhvm.debugger.port = <%= @debugger_port %>
+<% end -%>
 hhvm.debugger.default_sandbox_path = <%= @source_root %>
 
 <% if scope.lookupvar('hhvm::server_ini_cfg_append') and !scope.lookupvar('hhvm::server_ini_cfg_append').empty? -%>
