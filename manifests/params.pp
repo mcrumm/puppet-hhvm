@@ -1,3 +1,4 @@
+# hhvm::params - set default options
 class hhvm::params {
 
   # Used in compilation, not in run time
@@ -6,22 +7,26 @@ class hhvm::params {
   $path_to_source_hhvm = '/usr/local/src/hiphop-php/hhvm/hphp/hhvm/hhvm'
   
   # What user should hhvm run as?
-  $hhvm_user  = $operatingsystem ? { centos => 'nginx', ubuntu => 'www-data', default => 'nginx' }
+  $hhvm_user  = $::operatingsystem ? {
+    centos => 'nginx',
+    ubuntu => 'www-data',
+    default => 'nginx'
+  }
   
   # Used in upstart/restart
-  $pid = "/var/run/hhvm/hhvm.pid"
+  $pid = '/var/run/hhvm/hhvm.pid'
   
   # This needs to be read/writeable by the hhvm process
-  $jit_repo = "/tmp/.hhvm.hhbc"
+  $jit_repo = '/tmp/.hhvm.hhbc'
   
   # What port and socket to listen to
   $port = 9000
-  $socket = "/var/run/hhvm/hhvm.sock"
-  $server_type = "fastcgi"
+  $socket = '/var/run/hhvm/hhvm.sock'
+  $server_type = 'fastcgi'
   
   # These settings might not be required anymore
-  $source_root = "/var/www/html"
-  $default_document = "index.php"
+  $source_root = '/var/www/html'
+  $default_document = 'index.php'
   
   # Debug settings
   $enable_debugger = false
@@ -29,7 +34,7 @@ class hhvm::params {
   $debugger_port = undef
   
   # Error log for cli
-  $error_log = "/var/log/hhvm/error.log"
+  $error_log = '/var/log/hhvm/error.log'
   
   # Admin server
   $admin_server_port = 0
