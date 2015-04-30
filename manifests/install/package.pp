@@ -26,7 +26,7 @@ class hhvm::install::package {
         }
       } else {
         include apt
-        apt::key { '1BE7A449': url => 'http://dl.hhvm.com/conf/hhvm.gpg.key' }
+        apt::key { '1BE7A449': key_source => 'http://dl.hhvm.com/conf/hhvm.gpg.key' }
         
         apt::source { "hhvm":
             location    => "http://dl.hhvm.com/ubuntu/",
