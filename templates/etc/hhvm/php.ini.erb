@@ -1,10 +1,11 @@
-; php options
-<% if scope.lookupvar("hhvm::date_timezone") %>
-date.timezone = <%= scope.lookupvar('hhvm::date_timezone') %>
-<% end %>
+;php options
+<% if @date_timezone -%>
+date.timezone = <%= @date_timezone %>
+<% end -%>
 
-; hhvm specific
-hhvm.log.level = <%= scope.lookupvar('hhvm::params::log_level') %>
-hhvm.log.always_log_unhandled_exceptions = <%= scope.lookupvar('hhvm::params::always_log_unhandled_exceptions') %>
-hhvm.log.runtime_error_reporting_level = <%= scope.lookupvar('hhvm::params::runtime_error_reporting_level') %>
-hhvm.mysql.typed_results = <%= scope.lookupvar('hhvm::params::typed_results') %>
+<% if scope.lookupvar('hhvm::php_ini_cfg_append') and !scope.lookupvar('hhvm::php_ini_cfg_append').empty? -%>
+;additional options
+	<% scope.lookupvar('hhvm::php_ini_cfg_append').sort_by {|k,v| k}.each do |key, val| -%>
+<%= key %>=<%= val %>
+	<% end -%>
+<% end -%>
