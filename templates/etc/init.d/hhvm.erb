@@ -17,8 +17,8 @@ NAME=hhvm
 DESC="HipHop VM"
 
 # Include hhvm defaults if available
-if [ -f /etc/default/hhvm ]; then
-        . /etc/default/hhvm
+if [ -f <%= @default %> ]; then
+        . <%= @default %>
 fi
 
 test -x $DAEMON || exit 0
@@ -40,7 +40,7 @@ start() {
                 start-stop-daemon --start --background --quiet \
 				    --pidfile $PIDFILE \
 				    --exec $DAEMON \
-				    -- -m server $ARGS $DAEMON_OPTS || true
+				    -- -m daemon $ARGS $DAEMON_OPTS || true
 				echo "$NAME."
 }
 

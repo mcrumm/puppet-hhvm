@@ -3,22 +3,34 @@ puppet-hhvm
 
 This module installs HHVM (the Facebook HipHop Virtual Machine) on your web server.
 
-The default settings are to listen on a socket at: /var/run/hhvm/hhvm.pid. You can use this via FastCGI in nginx or Apache to connect to it.
+The default settings are to listen on a socket at: /var/run/hhvm/hhvm.sock. You can use this via FastCGI in nginx or Apache to connect to it.
 
 Usage:
 ======
 
-The module by default will compile HipHop VM from source.
-
-Puppet will most likely time out but the compilation will continue in the background.
+The module by default will install HipHop VM from a package and start the service on port 9000 as well as create a socket.
 
 class { "hhvm": }
 
-To use a package instead (from dl.hhvm.com repo):
+To launch multiple hhvm instances on seperate ports and sockets:
+
+hhvm::service { "9001": }
+
+hhvm::service { "9002": }
+
+To use a nightly instead:
 
 class { "hhvm": 
-	compile_from_source => false,
+	use_nightly => true
 }
+
+To compile from source instead:
+
+class { "hhvm": 
+	compile_from_source => true,
+}
+
+Puppet will most likely time out but the compilation will continue in the background.
 
 Additional options are supported, take a look at init.pp:
 
@@ -34,6 +46,14 @@ Connecting to HHVM:
 In your nginx configuration, set:
 
 fastcgi_pass   unix:/var/run/hhvm/hhvm.sock;
+
+Or if you are running multiple HHVM:
+
+fastcgi_pass   unix:/var/run/hhvm/hhvm_9001.sock;
+
+fastcgi_pass   unix:/var/run/hhvm/hhvm_9002.sock;
+
+etc.
 
 Restarting HHVM
 ===============
