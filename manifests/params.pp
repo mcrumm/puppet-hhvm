@@ -64,6 +64,5 @@ class hhvm::params {
   #   display_errors      => 'On', # no such setting?
   #   max_execution_time  => '600', # no such setting?
   #   max_input_vars      => '3000', # no such setting?
-  
-  $enable_zend_ini_compat = undef
+  $disable_zend_ini_compat = false
 }

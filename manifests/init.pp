@@ -34,7 +34,7 @@ class hhvm(
   $enable_debugger_server = undef,
   $admin_server_password = undef,
 
-  $enable_zend_ini_compat = $hhvm::params::enable_zend_ini_compat,
+  $disable_zend_ini_compat = $hhvm::params::disable_zend_ini_compat,
   $limit = undef
 ) {
   include hhvm::params
