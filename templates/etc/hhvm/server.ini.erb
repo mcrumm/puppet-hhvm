@@ -54,7 +54,7 @@ hhvm.debugger.port = <%= @debugger_port %>
 <% end -%>
 hhvm.debugger.default_sandbox_path = <%= @source_root %>
 
-<% if @disable_zend_ini_compat -%>
+<% if scope.lookupvar("hhvm::disable_zend_ini_compat") != '' %>
 hhvm.enable_zend_ini_compat = false
 <% end -%>
 
