@@ -54,6 +54,10 @@ hhvm.debugger.port = <%= @debugger_port %>
 <% end -%>
 hhvm.debugger.default_sandbox_path = <%= @source_root %>
 
+<% if @enable_zend_ini_compat -%>
+hhvm.enable_zend_ini_compat = <%= @enable_zend_ini_compat %>
+<% end -%>
+
 <% if scope.lookupvar('hhvm::server_ini_cfg_append') and !scope.lookupvar('hhvm::server_ini_cfg_append').empty? -%>
 	<% scope.lookupvar('hhvm::server_ini_cfg_append').sort_by {|k,v| k}.each do |key, val| -%>
 <%= key %>=<%= val %>
