@@ -11,8 +11,6 @@ define hhvm::service (
   $jit_warmup_requests = $hhvm::params::jit_warmup_requests,
   
   $date_timezone = $hhvm::params::date_timezone,
-  $max_post_size = $hhvm::params::max_post_size,
-  $upload_max_file_size = $hhvm::params::upload_max_file_size,
   
   $enable_debugger = $hhvm::params::enable_debugger,
   $enable_debugger_server = $hhvm::params::enable_debugger_server,
