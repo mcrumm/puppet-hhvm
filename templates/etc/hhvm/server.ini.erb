@@ -29,7 +29,7 @@ hhvm.log.admin_log.file = <%= @admin_server_log %>
 
 ; admin server
 <% if scope.lookupvar("hhvm::admin_server_password") != '' %>
-hhvm.admin_server.password = <%= scope.lookupvar('hhvm::admin_server_password') %>
+hhvm.admin_server.password = <%= scope.lookupvar('hhvm::service::admin_server_password') %>
 <% end %>
 <% if @admin_server_port -%>
 hhvm.admin_server.port = <%= @admin_server_port %>
