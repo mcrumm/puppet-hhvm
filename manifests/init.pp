@@ -34,7 +34,7 @@ class hhvm(
   $enable_debugger_server = undef,
   $admin_server_password = undef,
 
-  $enable_zend_ini_compat = undef,
+  $enable_zend_ini_compat = $hhvm::params::enable_zend_ini_compat,
   $limit = undef
 ) {
   include hhvm::params
@@ -93,12 +93,7 @@ class hhvm(
     undef => $hhvm::params::limit,
     default => $limit
   }
-  
-  $enable_zend_ini_compat_final = $enable_zend_ini_compat ? {
-    undef => $hhvm::params::enable_zend_ini_compat,
-    default => $enable_zend_ini_compat
-  }
-  
+ 
   if($compile_from_source) {
     $path_to_hhvm = '/usr/local/bin/hhvm'
   } else {
