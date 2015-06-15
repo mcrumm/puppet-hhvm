@@ -94,7 +94,7 @@ class hhvm(
     default => $limit
   }
   
-  $enable_zend_ini_compat = $enable_zend_ini_compat ? {
+  $enable_zend_ini_compat_final = $enable_zend_ini_compat ? {
     undef => $hhvm::params::enable_zend_ini_compat,
     default => $enable_zend_ini_compat
   }
