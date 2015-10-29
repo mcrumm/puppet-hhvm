@@ -3,14 +3,14 @@
 class hhvm::config {
   file { '/var/log/hhvm':
     ensure => 'directory',
-    owner  => $::hhvm_user,
-    group  => $::hhvm_user
+    owner  => $hhvm::params::hhvm_user,
+    group  => $hhvm::params::hhvm_user
   }
     
   file { '/var/run/hhvm':
     ensure => 'directory',
-    owner  => $::hhvm_user,
-    group  => $::hhvm_user
+    owner  => $hhvm::params::hhvm_user,
+    group  => $hhvm::params::hhvm_user
   }
           
   file { '/etc/hhvm':
@@ -20,8 +20,8 @@ class hhvm::config {
   # this is only needed for www-data
   file { '/var/www/.hhvm.hhbc':
     ensure => 'file',
-    owner  => $::hhvm_user,
-    group  => $::hhvm_user
+    owner  => $hhvm::params::hhvm_user,
+    group  => $hhvm::params::hhvm_user
   }
     
   file { '/etc/hhvm/cli.ini':
