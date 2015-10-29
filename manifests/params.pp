@@ -14,7 +14,7 @@ class hhvm::params {
   $pid = '/var/run/hhvm/hhvm.pid'
   
   # This needs to be read/writeable by the hhvm process
-  $jit_repo = '/tmp/.hhvm.hhbc'
+  $jit_repo = '/var/run/hhvm/hhvm.hhbc'
   
   # What port and socket to listen to
   $port = 9000
