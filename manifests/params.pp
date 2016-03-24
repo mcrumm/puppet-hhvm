@@ -14,7 +14,7 @@ class hhvm::params {
   $pid = '/var/run/hhvm/hhvm.pid'
   
   # This needs to be read/writeable by the hhvm process
-  $jit_repo = '/tmp/.hhvm.hhbc'
+  $jit_repo = '/var/run/hhvm/hhvm.hhbc'
   
   # What port and socket to listen to
   $port = 9000
@@ -64,4 +64,5 @@ class hhvm::params {
   #   display_errors      => 'On', # no such setting?
   #   max_execution_time  => '600', # no such setting?
   #   max_input_vars      => '3000', # no such setting?
+  $disable_zend_ini_compat = ''
 }

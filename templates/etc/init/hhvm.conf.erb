@@ -14,7 +14,7 @@ umask 022
 limit nofile <%= @limit %> <%= @limit %>
 
 post-stop script
-    /bin/rm -f <%= @pid %> <%= @socket %>
+    /bin/rm -f <%= @pid %> <%= @socket %> <%= @jit_repo %>
 end script
 
 # Location of config and executable
