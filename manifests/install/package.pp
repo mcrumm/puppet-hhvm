@@ -30,7 +30,7 @@ class hhvm::install::package {
         
         apt::repository { 'hhvm':
             url        => 'http://dl.hhvm.com/ubuntu/',
-            distro     => 'trusty',
+            distro     => $::lsbdistcodename,
             repository => 'main',
             require    => Apt::Key['2048R/1BE7A449']
         }
