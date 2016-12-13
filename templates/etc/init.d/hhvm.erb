@@ -22,20 +22,20 @@ DESC="HHVM FastCGI Daemon"
 NAME=hhvm
 DAEMON=<%= scope.lookupvar('hhvm::path_to_hhvm') %>
 PIDFILE=<%= @pid %>
-SCRIPTNAME=/etc/init.d/$NAME
+SCRIPTNAME=/etc/init.d/$NAME_<%= @port %>
 
 # Exit if the package is not installed
 [ -x "$DAEMON" ] || exit 0
 
 # Default values. This values can be overwritten in '/etc/default/hhvm'
-CONFIG_FILE="/etc/hhvm/server.ini"
-SYSTEM_CONFIG_FILE="/etc/hhvm/php.ini"
-RUN_AS_USER="www-data"
-RUN_AS_GROUP="www-data"
+CONFIG_FILE="<%= @server_ini %>"
+SYSTEM_CONFIG_FILE="<%= @php_ini %>"
+RUN_AS_USER="<%= scope.lookupvar('hhvm::params::hhvm_user') %>"
+RUN_AS_GROUP="<%= scope.lookupvar('hhvm::params::hhvm_group') %>"
 ADDITIONAL_ARGS=""
 
 # Read configuration variable file if it is present
-[ -r /etc/default/$NAME ] && . /etc/default/$NAME
+[ -r <%= @default %> ] && . <%= @default %>
 
 DAEMON_ARGS="--config ${SYSTEM_CONFIG_FILE} \
 --config ${CONFIG_FILE} \

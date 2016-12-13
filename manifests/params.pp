@@ -9,6 +9,13 @@ class hhvm::params {
     ubuntu => 'www-data',
     default => 'nginx'
   }
+
+  # What group should hhvm run as?
+  $hhvm_group  = $::operatingsystem ? {
+    centos => 'nginx',
+    ubuntu => 'www-data',
+    default => 'nginx'
+  }
   
   # Used in upstart/restart
   $pid = '/var/run/hhvm/hhvm.pid'

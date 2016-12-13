@@ -1,5 +1,6 @@
 MODE=daemon
-USER=<%= scope.lookupvar('hhvm::params::hhvm_user') %>
+RUN_AS_USER=<%= scope.lookupvar('hhvm::params::hhvm_user') %>
+RUN_AS_GROUP=<%= scope.lookupvar('hhvm::params::hhvm_group') %>
 SOCK=<%= @socket %>
 PORT=<%= @port %>
 PIDFILE=<%= @pid %>
