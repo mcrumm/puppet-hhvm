@@ -16,11 +16,12 @@
 # Do NOT "set -e"
 
 # PATH should only include /usr/* if it runs after the mountnfs.sh script
-PATH=/sbin:/usr/sbin:/bin:/usr/bin
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/usr/sbin:/bin:/usr/bin
+HPHP_HOME=/usr/local/src/hiphop-php/hhvm
 DESC="HHVM FastCGI Daemon"
 NAME=hhvm
 DAEMON=<%= scope.lookupvar('hhvm::path_to_hhvm') %>
-PIDFILE=/var/run/hhvm/pid
+PIDFILE=<%= @pid %>
 SCRIPTNAME=/etc/init.d/$NAME
 
 # Exit if the package is not installed
