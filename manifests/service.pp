@@ -33,6 +33,8 @@ define hhvm::service (
             "(_${hhvm::params::port})",'','G')
   $init = regsubst("/etc/init/hhvm_${port}.conf",
           "(_${hhvm::params::port})",'','G')
+  $systemd = regsubst("/etc/systemd/system/hhvm_${port}.service",
+    "(_${hhvm::params::port})",'','G')
   $server_ini = regsubst("/etc/hhvm/server_${port}.ini",
                 "(_${hhvm::params::port})",'','G')
   $php_ini =  regsubst("/etc/hhvm/php_${port}.ini",
@@ -62,12 +64,21 @@ define hhvm::service (
     group   => 'root',
     content => template("${module_name}/etc/init.d/hhvm.erb"),
   }
-          
-  file { $init:
-    ensure  => 'file',
-    owner   => 'root',
-    group   => 'root',
-    content => template("${module_name}/etc/init/hhvm.conf.erb")
+
+  if $::operatingsystemrelease == '14.04' {
+    file { $init:
+      ensure  => 'file',
+      owner   => 'root',
+      group   => 'root',
+      content => template("${module_name}/etc/init/hhvm.conf.erb")
+    }
+  } else {
+    file { $systemd:
+      ensure  => 'file',
+      owner   => 'root',
+      group   => 'root',
+      content => template("${module_name}/etc/systemd/system/hhvm.service.erb")
+    }
   }
 
   file { $server_ini:

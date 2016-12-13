@@ -1,0 +1,12 @@
+[Unit]
+Description=HipHop Virtual Machine
+
+[Service]
+ExecStart=<%= scope.lookupvar('hhvm::path_to_hhvm') %> -m daemon -u <%= scope.lookupvar('hhvm::params::hhvm_user') %> -c <%= @server_ini %> -c <%= @php_ini %> -c <%= @config_hdf %>
+ExecStop=rm <%= @pid %>
+PIDFile=<%= @pid %>
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
