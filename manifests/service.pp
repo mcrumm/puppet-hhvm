@@ -116,5 +116,10 @@ define hhvm::service (
         enable    => true,
         require   => Package[$hhvm::install::package::hhvm_package_name]
     }
+
+    # might need systemctl daemon-reload and systemctl enable hhvm.service?
+    if $::operatingsystemrelease == '16.04' {
+
+    }
   }
 }
