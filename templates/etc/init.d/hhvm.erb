@@ -22,7 +22,7 @@ DESC="HHVM FastCGI Daemon"
 NAME=hhvm
 DAEMON=<%= scope.lookupvar('hhvm::path_to_hhvm') %>
 PIDFILE=<%= @pid %>
-SCRIPTNAME=/etc/init.d/$NAME_<%= @port %>
+SCRIPTNAME=/etc/init.d/hhvm_<%= @port %>
 
 # Exit if the package is not installed
 [ -x "$DAEMON" ] || exit 0
