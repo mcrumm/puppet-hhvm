@@ -5,7 +5,7 @@ Description=HipHop Virtual Machine
 LimitNOFILE=><%= @limit %>
 LimitNPROC=><%= @limit %>
 RuntimeDirectory=hhvm
-ExecStartPre=/bin/chown <%= scope.lookupvar('hhvm::params::hhvm_user') %>:<%= scope.lookupvar('hhvm::params::hhvm_group') %> /var/run/hhvm
+ExecStartPre=/bin/chown -R <%= scope.lookupvar('hhvm::params::hhvm_user') %>:<%= scope.lookupvar('hhvm::params::hhvm_group') %> /var/run/hhvm
 ExecStart=<%= scope.lookupvar('hhvm::path_to_hhvm') %> -m daemon -u <%= scope.lookupvar('hhvm::params::hhvm_user') %> -c <%= @server_ini %> -c <%= @php_ini %> -c <%= @config_hdf %>
 ExecStop=rm <%= @pid %>
 PIDFile=<%= @pid %>
