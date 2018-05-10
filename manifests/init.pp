@@ -35,7 +35,9 @@ class hhvm(
   $admin_server_password = undef,
 
   $disable_zend_ini_compat = $hhvm::params::disable_zend_ini_compat,
-  $limit = undef
+  $limit = undef,
+
+  $hack_compiler_default = undef
 ) {
   include hhvm::params
   
@@ -128,7 +130,8 @@ class hhvm(
     enable_debugger        => $enable_debugger_final,
     enable_debugger_server => $enable_debugger_server_final,
     admin_server_password  => $admin_server_password_final,
-    limit                  => $limit_final
+    limit                  => $limit_final,
+    hack_compiler_default  => $hack_compiler_default
   }
 
   anchor { 'hhvm::begin': }
