@@ -16,9 +16,7 @@ define hhvm::service (
   $enable_debugger_server = $hhvm::params::enable_debugger_server,
   $admin_server_password = $hhvm::params::admin_server_password,
   
-  $limit = $hhvm::params::limit,
-
-  $hack_compiler_default = $hhvm::params::hack_compiler_default
+  $limit = $hhvm::params::limit
 ) {
   include ::hhvm
   

@@ -72,6 +72,4 @@ class hhvm::params {
   #   max_execution_time  => '600', # no such setting?
   #   max_input_vars      => '3000', # no such setting?
   $disable_zend_ini_compat = ''
-
-  $hack_compiler_default = undef
 }
