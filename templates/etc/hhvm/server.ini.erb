@@ -29,7 +29,7 @@ hhvm.enable_zend_compat = 1
 hhvm.log.admin_log.file = <%= @admin_server_log %>
 
 ; admin server
-<% if scope.lookupvar("hhvm::admin_server_password") != '' %>
+<% unless scope.lookupvar("hhvm::admin_server_password").nil? %>
 hhvm.admin_server.password = <%= @admin_server_password_final %>
 <% end %>
 <% if @admin_server_port -%>
